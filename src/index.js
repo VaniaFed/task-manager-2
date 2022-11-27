@@ -189,3 +189,5 @@ initClickFilter();
 initRemoveTask();
 
 initRemoveCompleted();
+
+input.focus();

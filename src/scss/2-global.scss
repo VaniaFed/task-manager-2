@@ -79,8 +79,10 @@ img {
     @include pNormal;
 }
 
-.task_done {
+.task_done .fake__control,
+.task_done .task__text {
     opacity: .4;
+    text-decoration: line-through;
 }
 
 .tasks-controls {
@@ -89,18 +91,10 @@ img {
     justify-content: space-between;
     margin-top: 20px;
 }
-.tasks-controls__left{
 
-}
-.tasks-controls__filter{
-
-}
 .filter{
     display: flex;
     column-gap: 30px;
-}
-.filter__item {
-
 }
 
 .tasks-clear-completed {
