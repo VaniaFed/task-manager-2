@@ -1,8 +1,7 @@
 'use sctict';
 
 const state = {
-	tasks: [
-	],
+	tasks: [],
 	filter: 'All',
 };
 
@@ -42,7 +41,7 @@ const filterTasks = () => state.tasks.filter(task => task.status === state.filte
 
 const filterControlls = document.querySelectorAll('.filter__item');
 
-const handleClickFilter = () => {
+const initClickFilter = () => {
 	filterControlls.forEach(currentFilter => {
 		currentFilter.addEventListener('click', e => {
 			if (!e.target.classList.contains('tab_active')) {
@@ -53,7 +52,7 @@ const handleClickFilter = () => {
 				updateActiveFilterValue(e.target.innerText);
 
 				renderTasks(state.filter);
-				handleRemoveTask();
+				initRemoveTask();
 				initPressTask();
 			}
 		});
@@ -76,25 +75,37 @@ const input = document.querySelector('.form__input');
 const tasksList = document.getElementsByClassName('tasks-list')[0];
 const tasksNumber = document.getElementsByClassName('tasks-controls__left')[0];
 
-const handleAddTask = () => {
+const initAddTaskOnEnter = () => {
 	input.addEventListener('keypress', e => {
 		if (e.key === 'Enter') {
-			const taskInputName = e.target.value;
-			if (taskInputName) {
-				const id = generateId();
-				updateTasks(newTask({name: taskInputName, id}));
-				updateNumberTaskView();
-				renderTasks();
-				handleRemoveTask();
-				initPressTask();
-			}
-
-			e.target.value = '';
+			handleAddTask(e);
 		}
 	});
 };
 
-const handleRemoveTask = () => {
+const initAddTaskOnFocusOut = () => {
+	input.addEventListener('blur', e => {
+		handleAddTask(e);
+	});
+};
+
+const handleAddTask = e => {
+	if (e.key === 'Enter' || e.type === 'blur') {
+		const taskInputName = e.target.value;
+		if (taskInputName) {
+			const id = generateId();
+			updateTasks(newTask({name: taskInputName, id}));
+			updateNumberTaskView();
+			renderTasks();
+			initRemoveTask();
+			initPressTask();
+		}
+
+		e.target.value = '';
+	}
+};
+
+const initRemoveTask = () => {
 	const removeBtns = document.querySelectorAll('.task__remove-btn');
 	removeBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
@@ -103,7 +114,7 @@ const handleRemoveTask = () => {
 			updateTasks(newTasksState);
 			updateNumberTaskView();
 			renderTasks();
-			handleRemoveTask();
+			initRemoveTask();
 		});
 	});
 };
@@ -129,8 +140,8 @@ const initPressTask = () => {
 };
 
 const renderTasks = () => {
-	const tasks = shouldFilter() ? filterTasks() : state.tasks;
 	tasksList.innerHTML = '';
+	const tasks = shouldFilter() ? filterTasks() : state.tasks;
 	tasks.forEach(task => {
 		tasksList.prepend(newTaskElement(task.name, task.id, task.status));
 	});
@@ -139,12 +150,13 @@ const renderTasks = () => {
 const newTaskElement = (taskName, id, status) => {
 	const taskElement = document.createElement('div');
 	taskElement.classList.add('task');
+
 	if (status === 'Completed') {
 		taskElement.classList.add('task_done');
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<div class="checkbox"><input type="checkbox" class="checkbox__input"> <span class="checkbox__fake fake__control"></span><p class="task__text">${taskName}</p><img class="task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
+	taskElement.innerHTML = `<div class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="checkbox__fake fake__control"></span><p class="task__text">${taskName}</p><img class="task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
 	return taskElement;
 };
 
@@ -152,22 +164,28 @@ const updateNumberTaskView = () => {
 	tasksNumber.innerText = `${state.tasks.length} items left`;
 };
 
-const handleRemoveCompleted = () => {
+const initRemoveCompleted = () => {
 	const clearBtn = document.querySelector('.tasks-clear-completed');
+
 	clearBtn.addEventListener('click', () => {
 		const newTasksState = state.tasks.filter(task => task.status !== 'Completed');
 		updateTasks(newTasksState);
 		updateNumberTaskView();
 		renderTasks();
-		handleRemoveTask();
+		initRemoveTask();
 	});
 };
 
 renderTasks();
+
 updateNumberTaskView();
-handleAddTask();
-handleClickFilter();
 
-handleRemoveTask();
+initAddTaskOnEnter();
 
-handleRemoveCompleted();
+initAddTaskOnFocusOut();
+
+initClickFilter();
+
+initRemoveTask();
+
+initRemoveCompleted();

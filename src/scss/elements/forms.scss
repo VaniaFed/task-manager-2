@@ -254,7 +254,6 @@
 
 .checkbox__input {
     display: none;
-    pointer-events: none;
     
     &:checked + .checkbox__fake::after {
         content: url(../../icons/checkbox-checked.svg);
