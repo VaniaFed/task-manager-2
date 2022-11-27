@@ -1,0 +1,81 @@
+@mixin Roboto {
+    font-family: Roboto, Arial, sans-serif; 
+}
+
+@mixin h1 {
+    @include Roboto;
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 104.64px;
+    letter-spacing: 0.02em;
+
+    @include media-mobile {
+        font-size: 34px;
+        line-height: 38.08px;
+    } 
+}
+
+@mixin h2 {
+    @include Roboto;
+    font-size: 59px;
+    font-weight: 700;
+    line-height: 73.16px;
+
+    @include media-mobile {
+        font-size: 34px;
+        letter-spacing: 0.02em;
+        line-height: 38.08px;
+    }
+}
+
+@mixin h3 {
+    @include Roboto;
+    font-size: 35px;
+    font-weight: 500;
+    line-height: 42.7px;
+
+    @include media-mobile {
+        font-size: 23px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        line-height: 27.6px;
+        letter-spacing: 0.04em;
+    }
+}
+
+@mixin pBig {
+    @include Roboto;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 28.06px;
+
+    @include media-mobile {
+        font-size: 16px;
+        line-height: 22.72px;
+    }
+}
+
+@mixin pNormal {
+    @include Roboto;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28.4px;
+
+    @include media-mobile {
+        font-size: 16px;
+        line-height: 22.72px;
+    }
+}
+
+@mixin pSmall {
+    @include Roboto;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24.14px;
+    letter-spacing: -0.01em;
+
+    @include media-mobile {
+        font-size: 16px;
+        line-height: 22.72px;
+    }
+}

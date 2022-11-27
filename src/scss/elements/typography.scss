@@ -1,0 +1,40 @@
+@import '../utilities/variables';
+@import '../utilities/media';
+@import '../utilities/mixins';
+
+a {
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+.p-big,
+.p-normal,
+.p-small {
+    color: $color-black;
+}
+
+h1 {
+    @include h1;
+}
+
+h2 {
+    @include h2;
+}
+
+h3 {
+    @include h3;
+}
+
+.p-big {
+    @include pBig;
+}
+
+.p-normal {
+    @include pNormal;
+}
+
+.p-small {
+    @include pSmall;
+}
