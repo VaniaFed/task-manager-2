@@ -1,0 +1,10 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.todo-task__remove-btn {
+	position: absolute;
+	right: 0;
+	width: 24px;
+	display: none;
+}

@@ -31,7 +31,6 @@ function scss() {
 
 function js() {
 	return src('src/*.js')
-		.pipe(concat('index.js'))
 		.pipe(dest('dist'));
 }
 

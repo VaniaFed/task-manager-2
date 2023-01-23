@@ -5,7 +5,7 @@ const state = {
 	filter: 'All',
 };
 
-const newTask = ({name, id}) => (
+const addTask = ({name, id}) => (
 	[...state.tasks, {
 		name,
 		status: 'Active',
@@ -17,7 +17,7 @@ const updateTasks = newTaskState => {
 	state.tasks = newTaskState;
 };
 
-const changeTaskStatus = (id, status) => {
+const setTaskStatusById = (id, status) => {
 	const newTasksState = state.tasks.map(task => {
 		if (task.id === Number(id)) {
 			return {
@@ -28,6 +28,7 @@ const changeTaskStatus = (id, status) => {
 
 		return task;
 	});
+
 	updateTasks(newTasksState);
 };
 
@@ -93,8 +94,12 @@ const handleAddTask = e => {
 	if (e.key === 'Enter' || e.type === 'blur') {
 		const taskInputName = e.target.value;
 		if (taskInputName) {
-			const id = generateId();
-			updateTasks(newTask({name: taskInputName, id}));
+			const newTask = {
+				name: taskInputName,
+				id: generateId(),
+			};
+
+			updateTasks(addTask(newTask));
 			updateNumberTaskView();
 			renderTasks();
 			initRemoveTask();
@@ -106,7 +111,7 @@ const handleAddTask = e => {
 };
 
 const initRemoveTask = () => {
-	const removeBtns = document.querySelectorAll('.task__remove-btn');
+	const removeBtns = document.querySelectorAll('.todo-task__remove-btn');
 	removeBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
 			const taskElement = e.target.parentNode.parentNode;
@@ -124,14 +129,14 @@ const initPressTask = () => {
 	const tasksList = document.querySelectorAll('.todo-task');
 	tasksList.forEach(task => {
 		task.addEventListener('click', e => {
-			if (!e.target.classList.contains('task__remove-btn')) {
+			if (!e.target.classList.contains('todo-task__remove-btn')) {
 				const taskId = task.dataset.id;
 				if (!task.classList.contains('task_done')) {
-					changeTaskStatus(taskId, 'Completed');
+					setTaskStatusById(taskId, 'Completed');
 					task.classList.add('task_done');
 					task.getElementsByClassName('checkbox__input')[0].checked = true;
 				} else {
-					changeTaskStatus(taskId, 'Active');
+					setTaskStatusById(taskId, 'Active');
 					task.classList.remove('task_done');
 					task.getElementsByClassName('checkbox__input')[0].checked = false;
 				}
@@ -158,7 +163,7 @@ const newTaskElement = (taskName, id, status) => {
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<label class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="task__remove-btn" src="icons/cross-23.svg" alt="Remove"></label>`;
+	taskElement.innerHTML = `<div class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
 	return taskElement;
 };
 
