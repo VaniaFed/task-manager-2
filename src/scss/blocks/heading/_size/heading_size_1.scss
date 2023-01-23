@@ -1,0 +1,18 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.heading_size_1 {
+    line-height: 104.64px;
+    letter-spacing: .02em;
+
+    @include media-tablet {
+        @include heading_size_2;
+    }
+
+    @include media-mobile {
+        @include heading_size_1;
+        font-size: 34px;
+        line-height: 38.08px;
+    } 
+}

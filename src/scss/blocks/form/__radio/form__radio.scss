@@ -1,0 +1,12 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.form__radio {
+    display: flex;
+    column-gap: 31px;
+
+    @include media-mobile {
+        column-gap: 30px;
+    }
+}

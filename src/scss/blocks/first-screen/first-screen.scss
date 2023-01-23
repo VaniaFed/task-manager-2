@@ -1,0 +1,13 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.first-screen {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 20.9%), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url(img/header/header-img.jpg);
+    background-size: cover;
+    background-position-y: center;
+    
+    @include media-laptop {
+        background-position-x: -110px;
+    }
+}

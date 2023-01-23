@@ -1,0 +1,19 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.cta-small__image {
+	width: 370px;
+    border-radius: 50px;
+
+    @include media-small-notebook {
+        width: 300px;
+        border-radius: 30px;
+    }
+
+    @include media-mobile {
+        width: 130px;
+        height: 133px;
+        border-radius: 20px;
+    }
+}

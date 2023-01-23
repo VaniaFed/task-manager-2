@@ -1,0 +1,13 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.main {
+	display: flex;
+    flex-direction: column;
+    row-gap: 135px;
+
+    @include media-mobile {
+        row-gap: 75px;
+    }
+}

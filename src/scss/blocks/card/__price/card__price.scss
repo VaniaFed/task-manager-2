@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card__price {
+	margin-top: 16px;
+
+	@include media-tablet {
+		margin-top: 13px;
+	}
+}

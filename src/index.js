@@ -39,15 +39,15 @@ const filterTasks = () => state.tasks.filter(task => task.status === state.filte
 
 // Filter view
 
-const filterControlls = document.querySelectorAll('.filter__item');
+const filterControlls = document.querySelectorAll('.tab__item');
 
 const initClickFilter = () => {
 	filterControlls.forEach(currentFilter => {
 		currentFilter.addEventListener('click', e => {
-			if (!e.target.classList.contains('tab_active')) {
+			if (!e.target.classList.contains('tab__item_active')) {
 				clearFiltersClass();
 
-				e.target.classList.add('tab_active');
+				e.target.classList.add('tab__item_active');
 
 				updateActiveFilterValue(e.target.innerText);
 
@@ -61,7 +61,7 @@ const initClickFilter = () => {
 
 const clearFiltersClass = () => {
 	filterControlls.forEach(filterell => {
-		filterell.classList.remove('tab_active');
+		filterell.classList.remove('tab__item_active');
 	});
 };
 
@@ -71,9 +71,9 @@ const updateActiveFilterValue = val => {
 
 // Tasks view
 
-const input = document.querySelector('.form__input');
-const tasksList = document.getElementsByClassName('tasks-list')[0];
-const tasksNumber = document.getElementsByClassName('tasks-controls__left')[0];
+const input = document.querySelector('.input');
+const tasksList = document.getElementsByClassName('todo-list')[0];
+const tasksNumber = document.getElementsByClassName('tasks-number')[0];
 
 const initAddTaskOnEnter = () => {
 	input.addEventListener('keypress', e => {
@@ -121,7 +121,7 @@ const initRemoveTask = () => {
 };
 
 const initPressTask = () => {
-	const tasksList = document.querySelectorAll('.task');
+	const tasksList = document.querySelectorAll('.todo-task');
 	tasksList.forEach(task => {
 		task.addEventListener('click', e => {
 			if (!e.target.classList.contains('task__remove-btn')) {
@@ -150,14 +150,15 @@ const renderTasks = () => {
 
 const newTaskElement = (taskName, id, status) => {
 	const taskElement = document.createElement('div');
-	taskElement.classList.add('task');
+	taskElement.classList.add('todo-task');
+	taskElement.classList.add('todo-list__item');
 
 	if (status === 'Completed') {
 		taskElement.classList.add('task_done');
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<div class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="checkbox__fake fake__control"></span><p class="task__text">${taskName}</p><img class="task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
+	taskElement.innerHTML = `<label class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="task__remove-btn" src="icons/cross-23.svg" alt="Remove"></label>`;
 	return taskElement;
 };
 
@@ -166,7 +167,7 @@ const updateNumberTaskView = () => {
 };
 
 const initRemoveCompleted = () => {
-	const clearBtn = document.querySelector('.tasks-clear-completed');
+	const clearBtn = document.querySelector('.clear-completed');
 
 	clearBtn.addEventListener('click', () => {
 		const newTasksState = state.tasks.filter(task => task.status !== 'Completed');

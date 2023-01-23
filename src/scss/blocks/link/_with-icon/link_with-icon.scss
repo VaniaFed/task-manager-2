@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.link_with-icon {
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+}

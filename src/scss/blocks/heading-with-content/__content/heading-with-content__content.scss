@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.heading-with-content__content {
+	margin-top: 30px;
+
+	@include media-mobile {
+		margin-top: 20px;
+	}
+}

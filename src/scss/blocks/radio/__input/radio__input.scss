@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.radio__input {
+    display: none;
+
+    &:checked + .fake-control_type_radio::after {
+        opacity: 1;
+    }
+}

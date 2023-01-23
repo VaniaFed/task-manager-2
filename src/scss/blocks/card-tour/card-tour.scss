@@ -1,0 +1,13 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card-tour {
+	height: 531px;
+    padding: 50px;
+	   
+    @include media-mobile {
+        height: 318px;
+        padding: 25px;
+    }
+}

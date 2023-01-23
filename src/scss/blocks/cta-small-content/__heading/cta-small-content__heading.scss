@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.cta-small-content__heading {
+    @include media-small-notebook {
+        margin-top: 30px;
+    }
+}

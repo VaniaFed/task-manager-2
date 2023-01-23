@@ -1,0 +1,17 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.section__top {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+
+    @include media-tablet {
+        width: 100%;
+    }
+    
+    @include media-mobile {
+        margin-bottom: 50px;
+    }
+}

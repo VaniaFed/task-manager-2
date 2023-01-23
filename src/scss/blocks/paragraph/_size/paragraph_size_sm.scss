@@ -1,0 +1,6 @@
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.paragraph_size_sm {
+    @include paragraph_size_sm;
+}

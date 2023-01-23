@@ -1,0 +1,15 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.link__icon {
+	display: inline-block;
+    width: 26px;
+	margin-right: 10px;
+
+    @include media-mobile {
+        width: 20px;
+        height: 20px;
+		margin-right: 5px;
+    }
+}

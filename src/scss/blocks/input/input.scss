@@ -1,0 +1,36 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.input {
+    @include paragraph;
+    padding: 20px;
+    background: $color-beige-100;
+    border: 1px solid $color-beige-200;
+    border-radius: 10px;
+
+    &:hover {
+        background: $color-beige-200;
+        cursor: pointer;
+    }
+
+    &:focus {
+        border-color: $color-gray-300;
+        outline: none;
+    }
+
+    &::placeholder,
+    &::-webkit-datetime-edit {
+        color: $color-gray-300;
+    }
+
+    &::-webkit-datetime-edit {
+        text-transform: uppercase;
+    }
+
+    &::-webkit-calendar-picker-indicator,
+    &::-webkit-inner-spin-button {
+            display: none;
+            -webkit-appearance: none;
+    }
+}

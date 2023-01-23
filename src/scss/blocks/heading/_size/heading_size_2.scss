@@ -1,0 +1,16 @@
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.heading_size_2 {
+    font-size: 59px;
+    line-height: 73.16px;
+
+    @include media-tablet {
+        font-size: 48px;
+        line-height: 64.16px
+    }
+
+    @include media-mobile {
+        @include heading_size_2_mobile;
+    }
+}

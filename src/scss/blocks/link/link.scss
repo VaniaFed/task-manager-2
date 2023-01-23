@@ -1,0 +1,24 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.link {
+    @include paragraph;
+    text-decoration: none;
+    color: $color-white;
+
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 1px;
+    }
+
+    &:hover::after {
+        background: $color-white;
+    }
+    
+    @include media-mobile {
+        word-wrap: break-word;
+    }
+}

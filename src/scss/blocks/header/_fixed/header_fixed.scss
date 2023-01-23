@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.header_fixed {
+    position: fixed !important;
+    background: rgba(#F3EFE8, .6);
+    backdrop-filter: blur(10px);
+}

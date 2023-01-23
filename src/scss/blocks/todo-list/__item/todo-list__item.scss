@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.todo-list__item {
+    margin-top: 18px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+}

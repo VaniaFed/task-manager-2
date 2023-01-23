@@ -13,20 +13,24 @@
     <title>Task Manager</title>
 </head>
 <body>
-    <div class="container form">
-        <input type="text" class="form__input" placeholder="What needs to be done?">
-        <div class="tasks-list">
+    <main class="page">
+        <div class="page__content">
+            <div class="container form page__form">
+                <input type="text" class="input form__input" placeholder="What needs to be done?">
+                <div class="todo-list">
+                </div>
+                <div class="todo-footer form__todo-footer">
+                    <div class="paragraph paragraph_color_black tasks-number">4 items left</div>
+                    <ul class="tab">
+                        <li class="tab__item tab__item_active">All</li>
+                        <li class="tab__item">Active</li>
+                        <li class="tab__item">Completed</li>
+                    </ul>
+                    <button class="button button_type_small clear-completed">Clear completed</button>
+                </div>
+            </div>
         </div>
-        <div class="tasks-controls">
-            <div class="tasks-controls__left">4 items left</div>
-            <ul class="tasks-controls__filter filter">
-                <li class="filter__item tab tab_active">All</li>
-                <li class="filter__item tab">Active</li>
-                <li class="filter__item tab">Completed</li>
-            </ul>
-            <div class="tasks-clear-completed">Clear completed</div>
-        </div>
-    </div>
+    </main>
     
     <script src="index.js" defer></script>
 </body>

@@ -1,0 +1,24 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+
+.todo-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.task__remove-btn {
+	position: absolute;
+	right: 0;
+	width: 24px;
+	display: none;
+}
+
+
+// .task_done .fake__control,
+// .task_done .task__text {
+// 	opacity: .4;
+// 	text-decoration: line-through;
+// }

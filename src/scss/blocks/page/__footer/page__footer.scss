@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.page__footer {
+	margin-top: 135px;
+
+	@include media-mobile {
+		margin-top: 75px;
+	}
+}

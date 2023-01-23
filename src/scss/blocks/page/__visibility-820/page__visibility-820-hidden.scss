@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.page__visibility-820-hidden {
+    @media (max-width: 820px) {
+        display: none; 
+    }
+}

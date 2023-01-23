@@ -1,0 +1,10 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card-list_laptop-quantity_2-in-row {
+	@include media-laptop-only {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 18px;
+	}
+}

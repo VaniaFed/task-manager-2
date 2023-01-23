@@ -1,0 +1,12 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.paragraph {
+    @include paragraph;
+    color: $color-white;
+    
+    @include media-mobile {
+        word-wrap: break-word;
+    }
+}

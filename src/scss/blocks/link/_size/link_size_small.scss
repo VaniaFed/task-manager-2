@@ -1,0 +1,7 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.link_size_small {
+	@include paragraph_size_sm;
+}

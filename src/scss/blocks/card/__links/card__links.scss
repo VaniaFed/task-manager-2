@@ -1,0 +1,8 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card__links {
+    position: relative;
+    right: -20px;
+}

@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card-list_tablet-quantity_1-in-row {
+	@include media-tablet {
+		grid-template-columns: 1fr;
+	}	
+}

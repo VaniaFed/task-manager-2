@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+@include media-laptop {
+	.page__laptop-visibility-hidden {
+		display: none;
+	}
+}

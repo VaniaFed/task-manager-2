@@ -1,0 +1,18 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    @include media-laptop {
+        padding: 0 24px;
+    }
+
+    @include media-mobile {
+        padding: 0 20px;
+    }
+}

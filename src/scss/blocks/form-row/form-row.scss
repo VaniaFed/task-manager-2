@@ -1,0 +1,17 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.form-row {
+	display: flex;
+    column-gap: 30px;
+
+    @include media-laptop {
+        column-gap: 20px;
+    }
+
+    @include media-tablet {
+        flex-direction: column;
+        row-gap: 30px;
+    }
+}

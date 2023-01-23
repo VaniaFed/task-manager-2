@@ -1,0 +1,9 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.footer__our-socials {
+    @include media-mobile {
+        margin-top: 7px
+    }
+}

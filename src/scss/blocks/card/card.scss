@@ -1,0 +1,41 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    color: $color-white;
+    border-radius: 50px;
+
+    &:hover .card__button {
+        background: $color-green-400;
+
+		&:active {
+			background: $color-orange-200;
+		}
+    }
+
+    &:hover .card__image {
+        transform: scale(1.2);
+    }
+
+    @include media-tablet {
+        border-radius: 20px;
+    }
+
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+		background: linear-gradient(360deg,rgba(0,0,0,.4) 0,rgba(0,0,0,.06) 48.44%,rgba(0,0,0,.5) 100%);
+    }
+}

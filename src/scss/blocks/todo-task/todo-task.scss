@@ -1,0 +1,12 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.todo-task {
+    display: flex;
+    column-gap: 20px;
+
+    &:hover .remove-btn {
+        display: block;
+    }
+}

@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.links_gap_50 {
+    column-gap: 50px;
+
+    @include media-laptop {
+        column-gap: 30px;
+    }
+}

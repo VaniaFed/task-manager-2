@@ -1,0 +1,13 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card-list_direction_column {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+
+    @include media-tablet {
+        row-gap: 20px;
+    }
+}

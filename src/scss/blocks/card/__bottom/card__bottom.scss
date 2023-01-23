@@ -1,0 +1,14 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.card__bottom {
+    position: relative;
+    bottom: -7px;
+    left: -20px;
+    margin-top: 70px;
+
+    @include media-tablet {
+        margin-top: 40px;
+    }
+}

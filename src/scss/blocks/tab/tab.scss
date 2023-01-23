@@ -1,0 +1,15 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.tab {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 30px;
+    row-gap: 10px;
+
+    @include media-tablet {
+        column-gap: 10px;
+    }
+}

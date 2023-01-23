@@ -1,0 +1,13 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.cta-small-content__paragraph {
+    margin-top: 20px;
+
+    @include media-mobile {
+        max-width: 300px;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+}

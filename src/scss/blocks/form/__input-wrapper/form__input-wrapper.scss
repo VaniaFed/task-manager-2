@@ -1,0 +1,27 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.form__input-wrapper {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
+        
+        display: inline-flex;
+        align-items: center;
+        width: 24px;
+        height: 26px;
+        
+        background: url('icons/ic-dropdown.svg');
+        pointer-events: none;
+
+        @include media-mobile {
+            right: 10px;
+        }
+    }
+}

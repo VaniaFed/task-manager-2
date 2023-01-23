@@ -1,0 +1,15 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.first-screen__cta {
+	max-width: 768px;
+    margin: 0 auto;
+	padding-top: calc(119px + 88px);
+    padding-bottom: 119px;
+
+	@include media-mobile {
+		padding-top: calc(52px + 88px);
+		padding-bottom: 52px;
+	}
+}

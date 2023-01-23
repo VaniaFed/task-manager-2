@@ -1,0 +1,15 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.checkbox__input {
+    display: none;
+    
+    &:checked + .fake-control_type_checkbox::after {
+        content: url(icons/checkbox-checked.svg);
+
+        @include media-mobile {
+            content: url(icons/checkbox-checked-mb.svg);
+        }
+    }
+}
