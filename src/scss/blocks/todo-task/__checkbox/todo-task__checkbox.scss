@@ -2,11 +2,6 @@
 @import 'src/scss/utilities/media';
 @import 'src/scss/utilities/mixins';
 
-.todo-list__item {
-    position: relative;
-    margin-top: 18px;
-
-    &:first-child {
-        margin-top: 0;
-    }
+.todo-task__checkbox {
+	width: 100%;
 }

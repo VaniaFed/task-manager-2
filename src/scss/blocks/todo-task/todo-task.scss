@@ -6,7 +6,7 @@
     display: flex;
     column-gap: 20px;
 
-    &:hover .remove-btn {
+    &:hover .todo-task__remove-btn {
         display: block;
     }
 }

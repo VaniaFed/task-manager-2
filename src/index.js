@@ -32,11 +32,18 @@ const setTaskStatusById = (id, status) => {
 	updateTasks(newTasksState);
 };
 
-const generateId = () => Math.floor(Math.random() * 1000);
+const getTasksByStatus = status => state.tasks.filter(task => task.status === status);
+
+const getFilteredTasks = () => state.tasks.filter(task => task.status === state.filter);
+
+const removeTask = id => {
+	const newTasksState = state.tasks.filter(task => task.id !== Number(id));
+	updateTasks(newTasksState);
+};
 
 const shouldFilter = () => state.filter !== 'All';
 
-const filterTasks = () => state.tasks.filter(task => task.status === state.filter);
+const generateId = () => Math.floor(Math.random() * 1000);
 
 // Filter view
 
@@ -46,27 +53,25 @@ const initClickFilter = () => {
 	filterControlls.forEach(currentFilter => {
 		currentFilter.addEventListener('click', e => {
 			if (!e.target.classList.contains('tab__item_active')) {
-				clearFiltersClass();
+				removeAllActiveClasses();
 
 				e.target.classList.add('tab__item_active');
 
-				updateActiveFilterValue(e.target.innerText);
+				updateActiveFilter(e.target.innerText);
 
-				renderTasks(state.filter);
-				initRemoveTask();
-				initPressTask();
+				reinit();
 			}
 		});
 	});
 };
 
-const clearFiltersClass = () => {
+const removeAllActiveClasses = () => {
 	filterControlls.forEach(filterell => {
 		filterell.classList.remove('tab__item_active');
 	});
 };
 
-const updateActiveFilterValue = val => {
+const updateActiveFilter = val => {
 	state.filter = val;
 };
 
@@ -100,10 +105,7 @@ const handleAddTask = e => {
 			};
 
 			updateTasks(addTask(newTask));
-			updateNumberTaskView();
-			renderTasks();
-			initRemoveTask();
-			initPressTask();
+			reinit();
 		}
 
 		e.target.value = '';
@@ -114,13 +116,9 @@ const initRemoveTask = () => {
 	const removeBtns = document.querySelectorAll('.todo-task__remove-btn');
 	removeBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
-			const taskElement = e.target.parentNode.parentNode;
-			const newTasksState = state.tasks.filter(task => task.id !== Number(taskElement.dataset.id));
-			updateTasks(newTasksState);
-			updateNumberTaskView();
-			renderTasks();
-			initRemoveTask();
-			initPressTask();
+			const taskId = e.target.parentNode.parentNode.dataset.id;
+			removeTask(taskId);
+			reinit();
 		});
 	});
 };
@@ -140,6 +138,8 @@ const initPressTask = () => {
 					task.classList.remove('task_done');
 					task.getElementsByClassName('checkbox__input')[0].checked = false;
 				}
+
+				updateNumberTaskView();
 			}
 		});
 	});
@@ -147,7 +147,7 @@ const initPressTask = () => {
 
 const renderTasks = () => {
 	tasksList.innerHTML = '';
-	const tasks = shouldFilter() ? filterTasks() : state.tasks;
+	const tasks = shouldFilter() ? getFilteredTasks() : state.tasks;
 	tasks.forEach(task => {
 		tasksList.prepend(newTaskElement(task.name, task.id, task.status));
 	});
@@ -163,27 +163,30 @@ const newTaskElement = (taskName, id, status) => {
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<div class="checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
+	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
 	return taskElement;
 };
 
 const updateNumberTaskView = () => {
-	tasksNumber.innerText = `${state.tasks.length} items left`;
+	tasksNumber.innerText = `${getTasksByStatus('Active').length} items left`;
 };
 
 const initRemoveCompleted = () => {
-	const clearBtn = document.querySelector('.clear-completed');
+	const clearCompleted = document.querySelector('.clear-completed');
 
-	clearBtn.addEventListener('click', () => {
-		const newTasksState = state.tasks.filter(task => task.status !== 'Completed');
-		updateTasks(newTasksState);
-		updateNumberTaskView();
-		renderTasks();
-		initRemoveTask();
+	clearCompleted.addEventListener('click', () => {
+		const activeTasks = getTasksByStatus('Active');
+		updateTasks(activeTasks);
+		reinit();
 	});
 };
 
-renderTasks();
+const reinit = () => {
+	renderTasks();
+	initPressTask();
+	initRemoveTask();
+	updateNumberTaskView();
+};
 
 updateNumberTaskView();
 
@@ -193,8 +196,9 @@ initAddTaskOnFocusOut();
 
 initClickFilter();
 
-initRemoveTask();
+// initRemoveTask();
 
 initRemoveCompleted();
+
 
 input.focus();

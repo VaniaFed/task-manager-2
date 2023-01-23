@@ -10,8 +10,8 @@
 }
 
 
-// .task_done .fake__control,
-// .task_done .task__text {
-// 	opacity: .4;
-// 	text-decoration: line-through;
-// }
+.task_done .fake-control,
+.task_done .task__text {
+	opacity: .4;
+	text-decoration: line-through;
+}
