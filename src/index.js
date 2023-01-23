@@ -115,6 +115,7 @@ const initRemoveTask = () => {
 			updateNumberTaskView();
 			renderTasks();
 			initRemoveTask();
+			initPressTask();
 		});
 	});
 };
