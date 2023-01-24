@@ -36,7 +36,7 @@ const getTasksByStatus = status => state.tasks.filter(task => task.status === st
 
 const getFilteredTasks = () => state.tasks.filter(task => task.status === state.filter);
 
-const removeTask = id => {
+const removeTaskById = id => {
 	const newTasksState = state.tasks.filter(task => task.id !== Number(id));
 	updateTasks(newTasksState);
 };
@@ -117,7 +117,7 @@ const initRemoveTask = () => {
 	removeBtns.forEach(btn => {
 		btn.addEventListener('click', e => {
 			const taskId = e.target.parentNode.parentNode.dataset.id;
-			removeTask(taskId);
+			removeTaskById(taskId);
 			reinit();
 		});
 	});
@@ -139,7 +139,7 @@ const initPressTask = () => {
 					task.getElementsByClassName('checkbox__input')[0].checked = false;
 				}
 
-				updateNumberTaskView();
+				updateNumberTask();
 			}
 		});
 	});
@@ -167,7 +167,7 @@ const newTaskElement = (taskName, id, status) => {
 	return taskElement;
 };
 
-const updateNumberTaskView = () => {
+const updateNumberTask = () => {
 	tasksNumber.innerText = `${getTasksByStatus('Active').length} items left`;
 };
 
@@ -185,10 +185,10 @@ const reinit = () => {
 	renderTasks();
 	initPressTask();
 	initRemoveTask();
-	updateNumberTaskView();
+	updateNumberTask();
 };
 
-updateNumberTaskView();
+updateNumberTask();
 
 initAddTaskOnEnter();
 
@@ -196,9 +196,6 @@ initAddTaskOnFocusOut();
 
 initClickFilter();
 
-// initRemoveTask();
-
 initRemoveCompleted();
-
 
 input.focus();
