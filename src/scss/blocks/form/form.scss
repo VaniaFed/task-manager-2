@@ -1,19 +1,5 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .form {
-    padding: 70px;
-    background: $color-white;
-    border-radius: 50px;
-
-    @include media-laptop {
-        padding: 60px;
-    }
-
-    @include media-tablet {
-        padding: 20px;
-        padding-bottom: 40px;
-        border-radius: 30px;
-    }
 }

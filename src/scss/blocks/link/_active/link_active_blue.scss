@@ -1,0 +1,12 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+@mixin link_active_blue {
+	&:active {
+		color: $color-blue-300;
+	}
+
+	&:active::after {
+		background: $color-blue-300;
+	}
+}

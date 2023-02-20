@@ -1,0 +1,17 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+.link_vk {
+	position: relative;
+
+	&::before {
+		content: url('icons/vk.svg');
+		position: absolute;
+		left: -36px;
+
+		@include media-mobile {
+			content: url('icons/vk_mob.svg');
+			left: -25px;
+		}
+	}
+}

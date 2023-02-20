@@ -1,16 +1,17 @@
+@import 'src/scss/blocks/paragraph/paragraph';
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .input {
     @include paragraph;
     padding: 20px;
-    background: $color-beige-100;
-    border: 1px solid $color-beige-200;
+    background: $color-blue-50;
+    border: 1px solid $color-blue-50;
     border-radius: 10px;
+    appearance: none;
 
     &:hover {
-        background: $color-beige-200;
+        background: $color-blue-50;
         cursor: pointer;
     }
 
@@ -32,5 +33,9 @@
     &::-webkit-inner-spin-button {
             display: none;
             -webkit-appearance: none;
+    }
+
+    @include media-mobile {
+        padding: 10px;
     }
 }

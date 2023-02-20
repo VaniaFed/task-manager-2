@@ -1,7 +1,8 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .header {
     display: flex;
+    flex-shrink: 0;
+    background: $color-white;
 }

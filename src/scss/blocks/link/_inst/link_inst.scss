@@ -1,0 +1,17 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+.link_inst {
+	position: relative;
+
+	&::before {
+		content: url('icons/inst.svg');
+		position: absolute;
+		left: -36px;
+
+		@include media-mobile {
+			content: url('icons/inst_mob.svg');
+			left: -25px;
+		}
+	}
+}

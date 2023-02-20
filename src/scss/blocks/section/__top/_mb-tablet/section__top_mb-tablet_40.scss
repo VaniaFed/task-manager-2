@@ -1,9 +1,0 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
-
-.section__top_mb-tablet_40 {
-	@include media-tablet {
-		margin-bottom: 40px;
-	}
-}

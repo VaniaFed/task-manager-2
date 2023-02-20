@@ -1,11 +1,11 @@
+@import 'src/scss/blocks/paragraph/paragraph';
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .link {
     @include paragraph;
     text-decoration: none;
-    color: $color-white;
+    color: $color-black;
 
     &::after {
         content: '';
@@ -15,7 +15,7 @@
     }
 
     &:hover::after {
-        background: $color-white;
+        background: $color-black;
     }
     
     @include media-mobile {

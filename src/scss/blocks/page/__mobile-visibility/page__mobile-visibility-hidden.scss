@@ -1,9 +1,0 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
-
-@include media-mobile {
-	.page__mobile-visibility-hidden {
-		display: none;
-	}
-}

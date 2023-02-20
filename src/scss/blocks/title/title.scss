@@ -1,0 +1,18 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+@mixin title_size_1 {
+    font-size: 96px;
+    font-weight: 700;
+    line-height: 104.64px;
+    letter-spacing: .02em;
+
+    @include media-mobile {
+        font-size: 34px;
+        line-height: 38.08px;
+    } 
+}
+
+.title {
+    @include title_size_1;
+}

@@ -1,0 +1,11 @@
+@import 'src/scss/blocks/paragraph/paragraph';
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.login {
+	@include paragraph_size_sm;
+	display: flex;
+    align-items: center;
+    gap: 8px;
+}

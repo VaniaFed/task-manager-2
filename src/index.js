@@ -66,8 +66,8 @@ const initClickFilter = () => {
 };
 
 const removeAllActiveClasses = () => {
-	filterControlls.forEach(filterell => {
-		filterell.classList.remove('tab__item_active');
+	filterControlls.forEach(filterEl => {
+		filterEl.classList.remove('tab__item_active');
 	});
 };
 

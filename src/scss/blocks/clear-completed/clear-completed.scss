@@ -1,0 +1,10 @@
+@import 'src/scss/blocks/button/button';
+@import 'src/scss/blocks/button/_small/button_small';
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.clear-completed {
+	@include button;
+	@include button_small;
+}

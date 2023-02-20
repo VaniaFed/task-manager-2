@@ -1,0 +1,18 @@
+@import 'src/scss/blocks/paragraph/_size/paragraph_size_big';
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+.tab__content {
+    @include paragraph_size_big;
+	height: 28px;
+	padding: 0;
+	color: inherit;	
+	background: none;
+    font-family: Roboto;
+	border: none;
+	cursor: pointer;
+
+	@include media-mobile {
+		height: 23px;
+	}
+}

@@ -1,6 +1,5 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .container_size_1168 {
     max-width: calc($container-width-desktop + 20px * 2 - 2px);

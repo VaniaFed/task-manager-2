@@ -1,0 +1,14 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/blocks/link/_active/link_active_blue';
+
+.footer__link {
+	display: inline-block;
+	color: $color-white;
+	
+	&:hover::after {
+		background: $color-white;
+	}
+	
+	@include link_active_blue;
+}

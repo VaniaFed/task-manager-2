@@ -1,0 +1,12 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+.header__logo {
+    display: flex;
+    width: 42px;
+    fill: $color-blue-300;
+
+    @include media-tablet {
+        width: 36px;
+    }
+}

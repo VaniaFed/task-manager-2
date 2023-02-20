@@ -1,0 +1,18 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+.footer__socials {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 20px;
+
+    @include media-tablet {
+        flex-direction: column;
+    }
+
+    @include media-mobile {
+        padding: 21px;
+        row-gap: 7px;
+    }
+}

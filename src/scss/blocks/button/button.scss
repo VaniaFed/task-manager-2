@@ -1,8 +1,8 @@
+@import 'src/scss/blocks/paragraph/paragraph';
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
-.button {
+@mixin button {
     @include paragraph;
     padding: 15px 72.5px;
     background: $color-green-400;
@@ -18,4 +18,12 @@
     &:active {
         background: $color-green-200;
     }
+
+    @include media-mobile {
+        padding: 12px 30px;
+    }
+
+}
+.button {
+    @include button;
 }

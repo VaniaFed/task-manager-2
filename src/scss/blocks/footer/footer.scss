@@ -1,7 +1,7 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .footer {
-    background: $color-beige-200;
+    flex: 0 0 auto;
+    background: $color-blue-200;
 }

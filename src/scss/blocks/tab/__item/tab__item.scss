@@ -1,11 +1,11 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
 
 .tab__item {
-    @include paragraph_size_big;
     position: relative;
-    cursor: pointer;
+    display: flex;
+    height: 34px;
+	cursor: pointer;
 
     &:not(.tab__item_active):hover::after {
         content: '';
@@ -20,5 +20,9 @@
         @include media-mobile {
             bottom: 0;
         }
+    }
+
+    @include media-mobile {
+        height: 23px;
     }
 }

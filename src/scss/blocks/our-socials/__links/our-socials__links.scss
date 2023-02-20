@@ -1,9 +1,0 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
-
-.our-socials__links {
-    @include media-tablet {
-        margin-top: 7px;
-    }
-}

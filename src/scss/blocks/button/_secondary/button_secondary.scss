@@ -1,0 +1,19 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+
+@mixin button_secondary {
+	background: $color-green-100;
+	color: $color-green-400;
+
+	&:hover {
+		background: $color-gray-100;
+	}
+
+	&:active {
+		background: $color-gray-200;
+	}
+}
+
+.button_secondary {
+	@include button_secondary;
+}
