@@ -7,4 +7,5 @@
 .clear-completed {
 	@include button;
 	@include button_small;
+	order: 1;
 }

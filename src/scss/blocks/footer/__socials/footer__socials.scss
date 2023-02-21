@@ -5,14 +5,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 30px 20px;
+    gap: 8px;
+    padding: 24px 20px;
 
     @include media-tablet {
         flex-direction: column;
     }
 
     @include media-mobile {
-        padding: 21px;
+        padding: 20px;
         row-gap: 7px;
     }
 }

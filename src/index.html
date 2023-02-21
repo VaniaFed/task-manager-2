@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Идеальные путешествия существуют">
         <meta name="keywords" content="Путешествия, поездки, тур, отпуск, праздники, каникулы">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="icons/favicon.svg">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -30,25 +30,25 @@
             </span>
         </nav>
     </header>
-    <main class="main">
-        <div class="todo main__todo container">
-            <input class="todo__input input" type="text" placeholder="What needs to be done?">
-            <div class="todo-content">
-                <!-- насчет этого хз. нужен ли todo-title -->
-                <h2 class="todo-title title title_size_3">All tasks</h2>
-                <div class="todo__list">
+    <main class="main container">
+            <div class="todo main__todo">
+                <input class="todo__input input" type="text" placeholder="What needs to be done?">
+                <div class="todo-content">
+                    <!-- насчет этого хз. нужен ли todo-title -->
+                    <h2 class="todo-title title title_size_3">All tasks <span class="subtext">(0-0-0)</span></h2>
+                    <div class="todo__list">
+                    </div>
+                </div>
+                <div class="todo-footer">
+                    <div class="todo__task-number tasks-number">4 items left</div>
+                    <ul class="tab">
+                        <li class="tab__item tab__item_active" data-filter="All"><button class="tab__content">All <span class="subtext tab__subtext">(0)</span></button></li>
+                        <li class="tab__item" data-filter="Active"><button class="tab__content">Active <span class="subtext tab__subtext">(0)</span></button></li>
+                        <li class="tab__item" data-filter="Completed"><button class="tab__content">Completed <span class="subtext tab__subtext">(0)</span></button></li>
+                    </ul>
+                    <button class="clear-completed hidden">Clear completed</button>
                 </div>
             </div>
-            <div class="todo-footer">
-                <div class="tasks-number">4 items left</div>
-                <ul class="tab">
-                    <li class="tab__item tab__item_active"><button class="tab__content">All</button></li>
-                    <li class="tab__item"><button class="tab__content">Active</button></li>
-                    <li class="tab__item"><button class="tab__content">Completed</button></li>
-                </ul>
-                <button class="clear-completed">Clear completed</button>
-            </div>
-        </div>
     </main>
     <footer class="footer page__footer">
         <div class="footer__socials container container_size_1168">

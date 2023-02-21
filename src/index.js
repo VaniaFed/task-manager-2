@@ -57,7 +57,8 @@ const initClickFilter = () => {
 
 				e.target.classList.add('tab__item_active');
 
-				updateActiveFilter(e.target.innerText);
+				const currentFilter = e.target.dataset.filter;
+				updateActiveFilter(currentFilter);
 
 				reinit();
 			}
@@ -78,7 +79,7 @@ const updateActiveFilter = val => {
 // Tasks view
 
 const input = document.querySelector('.input');
-const tasksList = document.getElementsByClassName('todo-list')[0];
+const tasksList = document.getElementsByClassName('todo__list')[0];
 const tasksNumber = document.getElementsByClassName('tasks-number')[0];
 
 const initAddTaskOnEnter = () => {
@@ -129,17 +130,32 @@ const initPressTask = () => {
 		task.addEventListener('click', e => {
 			if (!e.target.classList.contains('todo-task__remove-btn')) {
 				const taskId = task.dataset.id;
-				if (!task.classList.contains('task_done')) {
+				if (!task.classList.contains('todo__item_completed')) {
 					setTaskStatusById(taskId, 'Completed');
-					task.classList.add('task_done');
+					task.classList.add('todo__item_completed');
 					task.getElementsByClassName('checkbox__input')[0].checked = true;
 				} else {
 					setTaskStatusById(taskId, 'Active');
-					task.classList.remove('task_done');
+					task.classList.remove('todo__item_completed');
 					task.getElementsByClassName('checkbox__input')[0].checked = false;
 				}
 
-				updateNumberTask();
+				if (state.filter === 'Active' || state.filter === 'Completed') {
+					reinit();
+				} else {
+					updateNumberTask();
+				}
+
+				// вызывать это по удалению, по нажатию на таску и по нажатию на кнопку clear completed
+				// вынести в функцию
+				const completedTasks = Array.from(getTasksByStatus('Completed'));
+				const clearCompleted = document.querySelector('.clear-completed');
+
+				if (completedTasks.length > 0) {
+					clearCompleted.classList.remove('hidden');
+				} else {
+					clearCompleted.classList.add('hidden');
+				}
 			}
 		});
 	});
@@ -156,10 +172,10 @@ const renderTasks = () => {
 const newTaskElement = (taskName, id, status) => {
 	const taskElement = document.createElement('div');
 	taskElement.classList.add('todo-task');
-	taskElement.classList.add('todo-list__item');
+	taskElement.classList.add('todo__item');
 
 	if (status === 'Completed') {
-		taskElement.classList.add('task_done');
+		taskElement.classList.add('todo__item_completed');
 	}
 
 	taskElement.dataset.id = id;

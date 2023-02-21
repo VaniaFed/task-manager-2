@@ -1,0 +1,11 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.todo__item_completed {
+	background: rgba(#d3d4d7, .6);
+
+    &:nth-child(2n) {
+        background: rgba(#d3d4d7, .6);
+    }
+}

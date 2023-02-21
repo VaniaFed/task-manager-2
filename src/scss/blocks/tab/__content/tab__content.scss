@@ -11,6 +11,7 @@
     font-family: Roboto;
 	border: none;
 	cursor: pointer;
+	pointer-events: none;
 
 	@include media-mobile {
 		height: 23px;

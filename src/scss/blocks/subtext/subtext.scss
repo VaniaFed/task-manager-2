@@ -1,0 +1,11 @@
+@import 'src/scss/blocks/paragraph/paragraph';
+@import 'src/scss/blocks/paragraph/_size/paragraph_size_sm';
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.subtext {
+	@include paragraph;
+	@include paragraph_size_sm;
+	color: #a6a6a6;
+}

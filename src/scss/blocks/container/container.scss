@@ -6,9 +6,9 @@
     padding: 0 20px;
     margin: 0 auto;
 
-    @include media-laptop {
-        max-width: calc($container-width-laptop + 20px * 2);
-    }
+    // @include media-laptop {
+    //     max-width: calc($container-width-laptop + 20px * 2);
+    // }
 
     @include media-tablet {
         max-width: none;

@@ -7,11 +7,18 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding: 0 30px;
+
+	@include media-laptop {
+		padding: 0px 12px;
+		flex-direction: column;
+    	gap: 24px;
+	}
 }
 
 
-.task_done .fake-control,
-.task_done .task__text {
-	opacity: .4;
+.todo__item_completed .fake-control,
+.todo__item_completed .task__text {
+	opacity: .35;
 	text-decoration: line-through;
 }

@@ -1,7 +1,7 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
 
-@mixin title_size_1 {
+@mixin title {
     font-size: 96px;
     font-weight: 700;
     line-height: 104.64px;
@@ -14,5 +14,5 @@
 }
 
 .title {
-    @include title_size_1;
+    @include title;
 }
