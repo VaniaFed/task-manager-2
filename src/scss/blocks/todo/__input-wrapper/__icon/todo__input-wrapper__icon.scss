@@ -1,0 +1,21 @@
+@import 'src/scss/utilities/variables';
+@import 'src/scss/utilities/media';
+@import 'src/scss/utilities/mixins';
+
+.todo__input-wrapper__icon {
+	z-index: 111;
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+	
+	display: none;
+	align-items: center;
+	width: 24px;
+	height: 26px;
+	cursor: pointer;
+	
+	@include media-mobile {
+		right: 10px;
+	}
+}

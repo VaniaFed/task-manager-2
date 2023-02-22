@@ -60,6 +60,8 @@ const initClickFilter = () => {
 				const currentFilter = e.target.dataset.filter;
 				updateActiveFilter(currentFilter);
 
+				updateTitle();
+
 				reinit();
 			}
 		});
@@ -144,18 +146,10 @@ const initPressTask = () => {
 					reinit();
 				} else {
 					updateNumberTask();
+					initSubtextValue();
 				}
 
-				// вызывать это по удалению, по нажатию на таску и по нажатию на кнопку clear completed
-				// вынести в функцию
-				const completedTasks = Array.from(getTasksByStatus('Completed'));
-				const clearCompleted = document.querySelector('.clear-completed');
-
-				if (completedTasks.length > 0) {
-					clearCompleted.classList.remove('hidden');
-				} else {
-					clearCompleted.classList.add('hidden');
-				}
+				toggleClearCompletedVisibility();
 			}
 		});
 	});
@@ -187,7 +181,7 @@ const updateNumberTask = () => {
 	tasksNumber.innerText = `${getTasksByStatus('Active').length} items left`;
 };
 
-const initRemoveCompleted = () => {
+const initClearCompleted = () => {
 	const clearCompleted = document.querySelector('.clear-completed');
 
 	clearCompleted.addEventListener('click', () => {
@@ -197,21 +191,115 @@ const initRemoveCompleted = () => {
 	});
 };
 
+const toggleClearCompletedVisibility = () => {
+	const completedTasks = Array.from(getTasksByStatus('Completed'));
+	const clearCompleted = document.querySelector('.clear-completed');
+
+	if (completedTasks.length > 0) {
+		clearCompleted.classList.remove('hidden');
+	} else {
+		clearCompleted.classList.add('hidden');
+	}
+};
+
 const reinit = () => {
 	renderTasks();
 	initPressTask();
 	initRemoveTask();
 	updateNumberTask();
+	toggleClearCompletedVisibility();
+	initSubtextValue();
+};
+
+const updateTitle = () => {
+	const title = document.getElementsByClassName('todo-title')[0];
+	const subtext = document.getElementsByClassName('subtext')[0];
+
+	const titleVal = title.textContent;
+	const subtextVal = subtext.textContent;
+
+	const newSubtext = document.createElement('span');
+	newSubtext.classList.add('subtext');
+	newSubtext.innerText = subtextVal;
+
+	title.innerText = state.filter;
+	title.appendChild(newSubtext);
+
+
+	// const regex = /\s\(.+\)/;
+	// const id = titleVal.search(regex);
+	// console.log(id);
+	// console.log(titleVal.split(regex));
+};
+
+const initSubtextValue = () => {
+	const titleSubtext = document.querySelector('.todo-title > .subtext');
+
+	switch (state.filter) {
+		case 'All': {
+			titleSubtext.textContent = state.tasks.length;
+			break;
+		}
+
+		case 'Active': {
+			titleSubtext.textContent = getTasksByStatus('Active').length;
+			break;
+		}
+
+		case 'Completed': {
+			titleSubtext.textContent = getTasksByStatus('Completed').length;
+			break;
+		}
+
+		default:
+	}
+
+	const tabSubtexts = document.querySelectorAll('.tab__subtext');
+	tabSubtexts[0].innerText = state.tasks.length;
+	tabSubtexts[1].innerText = getTasksByStatus('Active').length;
+	tabSubtexts[2].innerText = getTasksByStatus('Completed').length;
+
+	// tabSubtexts.forEach(tabSubtext => {
+	// 	console.log(tabSubtext);
+	// 	tabSubtext.innerText =
+	// });
 };
 
 updateNumberTask();
 
 initAddTaskOnEnter();
 
-initAddTaskOnFocusOut();
-
 initClickFilter();
 
-initRemoveCompleted();
+initClearCompleted();
 
 input.focus();
+
+const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
+clearInputIcon.addEventListener('mousedown', () => {
+	input.value = '';
+});
+
+initAddTaskOnFocusOut();
+
+input.addEventListener('focus', () => {
+	const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
+	clearInputIcon.classList.add('todo__input-wrapper_icon_shown');
+});
+
+input.addEventListener('blur', () => {
+	const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
+	clearInputIcon.classList.remove('todo__input-wrapper_icon_shown');
+});
+
+input.addEventListener('keydown', e => {
+	console.log(e.key);
+	if (e.key === 'Escape') {
+		input.value = '';
+		input.blur();
+	}
+});
+
+document.addEventListener('keypress', () => {
+	input.focus();
+});

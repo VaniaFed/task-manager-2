@@ -32,10 +32,13 @@
     </header>
     <main class="main container">
             <div class="todo main__todo">
-                <input class="todo__input input" type="text" placeholder="What needs to be done?">
+                <div class="todo__input-wrapper">
+                    <input class="todo__input input" type="text" placeholder="What needs to be done?">
+                    <img class="todo__input-wrapper__icon todo__input-wrapper_icon_shown" src="icons/cross-clear.svg" alt="Clear">
+                </div>
                 <div class="todo-content">
                     <!-- насчет этого хз. нужен ли todo-title -->
-                    <h2 class="todo-title title title_size_3">All tasks <span class="subtext">(0-0-0)</span></h2>
+                    <h2 class="todo-title title title_size_3">All tasks <span class="subtext">(0)</span></h2>
                     <div class="todo__list">
                     </div>
                 </div>
