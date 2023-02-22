@@ -158,9 +158,15 @@ const initPressTask = () => {
 const renderTasks = () => {
 	tasksList.innerHTML = '';
 	const tasks = shouldFilter() ? getFilteredTasks() : state.tasks;
-	tasks.forEach(task => {
-		tasksList.prepend(newTaskElement(task.name, task.id, task.status));
-	});
+
+	if (tasks.length > 0) {
+		tasksList.classList.remove('hidden-hard');
+		tasks.forEach(task => {
+			tasksList.prepend(newTaskElement(task.name, task.id, task.status));
+		});
+	} else {
+		tasksList.classList.add('hidden-hard');
+	}
 };
 
 const newTaskElement = (taskName, id, status) => {
@@ -204,6 +210,7 @@ const toggleClearCompletedVisibility = () => {
 
 const reinit = () => {
 	renderTasks();
+	showNoTasksIfNecessary();
 	initPressTask();
 	initRemoveTask();
 	updateNumberTask();
@@ -215,7 +222,7 @@ const updateTitle = () => {
 	const title = document.getElementsByClassName('todo-title')[0];
 	const subtext = document.getElementsByClassName('subtext')[0];
 
-	const titleVal = title.textContent;
+	// const titleVal = title.textContent;
 	const subtextVal = subtext.textContent;
 
 	const newSubtext = document.createElement('span');
@@ -224,7 +231,6 @@ const updateTitle = () => {
 
 	title.innerText = state.filter;
 	title.appendChild(newSubtext);
-
 
 	// const regex = /\s\(.+\)/;
 	// const id = titleVal.search(regex);
@@ -303,3 +309,53 @@ input.addEventListener('keydown', e => {
 document.addEventListener('keypress', () => {
 	input.focus();
 });
+
+const showNoTasksIfNecessary = () => {
+	const noTasks = document.querySelector('.no-tasks');
+	if (
+		(state.tasks.length === 0 && state.filter === 'All')
+		|| (getTasksByStatus('Active').length === 0 && state.filter === 'Active')
+		|| (getTasksByStatus('Completed').length === 0 && state.filter === 'Completed')
+	) {
+		noTasks.classList.remove('hidden-hard');
+		switch (state.filter) {
+			case 'All': {
+				const noTasksImage = document.querySelector('.no-tasks__image');
+				noTasksImage.classList.remove('hidden-hard');
+
+				const noTasksText = document.querySelector('.no-tasks__text');
+				noTasksText.innerText = 'Как-то пустовато... Добавим новую задачу?';
+
+				break;
+			}
+
+			case 'Active': {
+				const noTasksImage = document.querySelector('.no-tasks__image');
+				noTasksImage.classList.add('hidden-hard');
+
+				const noTasksText = document.querySelector('.no-tasks__text');
+				noTasksText.innerText = 'Активных задач пока нет';
+
+				break;
+			}
+
+			case 'Completed': {
+				const noTasksImage = document.querySelector('.no-tasks__image');
+				noTasksImage.classList.add('hidden-hard');
+
+				const noTasksText = document.querySelector('.no-tasks__text');
+				noTasksText.innerText = 'Вы еще не закончили ни одну задачу';
+
+				break;
+			}
+
+			default:
+				break;
+		}
+	} else {
+		const noTasks = document.querySelector('.no-tasks');
+		noTasks.classList.add('hidden-hard');
+	}
+};
+
+showNoTasksIfNecessary();
