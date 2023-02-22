@@ -294,7 +294,7 @@ input.addEventListener('blur', () => {
 
 input.addEventListener('keydown', e => {
 	console.log(e.key);
-	if (e.key === 'Escape') {
+	if (e.key === 'Escape' || e.key === 'Tab') {
 		input.value = '';
 		input.blur();
 	}
