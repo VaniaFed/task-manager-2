@@ -2,7 +2,7 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
 
-.link {
+@mixin link {
     @include paragraph;
     text-decoration: none;
     color: $color-black;
@@ -21,4 +21,8 @@
     @include media-mobile {
         word-wrap: break-word;
     }
+}
+
+.link {
+    @include link;
 }

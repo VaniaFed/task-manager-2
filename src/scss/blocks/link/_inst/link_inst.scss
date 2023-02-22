@@ -1,7 +1,7 @@
 @import 'src/scss/utilities/variables';
 @import 'src/scss/utilities/media';
 
-.link_inst {
+@mixin link_inst {
 	position: relative;
 
 	&::before {
@@ -14,4 +14,8 @@
 			left: -25px;
 		}
 	}
+}
+
+.link_inst {
+	@include link_inst;
 }

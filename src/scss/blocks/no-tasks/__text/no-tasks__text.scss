@@ -2,7 +2,6 @@
 @import 'src/scss/utilities/media';
 @import 'src/scss/utilities/mixins';
 
-.label {
-    @include paragraph;
-    display: block;
+.no-tasks__text {
+	text-align: center;
 }

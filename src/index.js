@@ -1,5 +1,9 @@
 'use sctict';
 
+import './index.html';
+import './index.scss';
+import './icons/cross-23.svg';
+
 const state = {
 	tasks: [],
 	filter: 'All',
@@ -179,12 +183,12 @@ const newTaskElement = (taskName, id, status) => {
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="icons/cross-23.svg" alt="Remove"></div>`;
+	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="assets/cross-23.svg" alt="Remove"></div>`;
 	return taskElement;
 };
 
 const updateNumberTask = () => {
-	tasksNumber.innerText = `${getTasksByStatus('Active').length} items left`;
+	tasksNumber.innerText = `${getTasksByStatus('Active').length} осталось`;
 };
 
 const initClearCompleted = () => {
@@ -222,20 +226,30 @@ const updateTitle = () => {
 	const title = document.getElementsByClassName('todo-title')[0];
 	const subtext = document.getElementsByClassName('subtext')[0];
 
-	// const titleVal = title.textContent;
 	const subtextVal = subtext.textContent;
 
 	const newSubtext = document.createElement('span');
 	newSubtext.classList.add('subtext');
-	newSubtext.innerText = subtextVal;
+	newSubtext.innerText = `${subtextVal})`;
 
-	title.innerText = state.filter;
+	switch (state.filter) {
+		case 'All':
+			title.innerText = 'Все задачи';
+			break;
+
+		case 'Active':
+			title.innerText = 'Активные';
+			break;
+
+		case 'Completed':
+			title.innerText = 'Завершенные';
+			break;
+
+		default:
+			break;
+	}
+
 	title.appendChild(newSubtext);
-
-	// const regex = /\s\(.+\)/;
-	// const id = titleVal.search(regex);
-	// console.log(id);
-	// console.log(titleVal.split(regex));
 };
 
 const initSubtextValue = () => {
@@ -243,17 +257,17 @@ const initSubtextValue = () => {
 
 	switch (state.filter) {
 		case 'All': {
-			titleSubtext.textContent = state.tasks.length;
+			titleSubtext.textContent = `(${state.tasks.length})`;
 			break;
 		}
 
 		case 'Active': {
-			titleSubtext.textContent = getTasksByStatus('Active').length;
+			titleSubtext.textContent = `(${getTasksByStatus('Active').length})`;
 			break;
 		}
 
 		case 'Completed': {
-			titleSubtext.textContent = getTasksByStatus('Completed').length;
+			titleSubtext.textContent = `(${getTasksByStatus('Completed').length})`;
 			break;
 		}
 
@@ -261,9 +275,9 @@ const initSubtextValue = () => {
 	}
 
 	const tabSubtexts = document.querySelectorAll('.tab__subtext');
-	tabSubtexts[0].innerText = state.tasks.length;
-	tabSubtexts[1].innerText = getTasksByStatus('Active').length;
-	tabSubtexts[2].innerText = getTasksByStatus('Completed').length;
+	tabSubtexts[0].innerText = `(${state.tasks.length})`;
+	tabSubtexts[1].innerText = `(${getTasksByStatus('Active').length})`;
+	tabSubtexts[2].innerText = `(${getTasksByStatus('Completed').length})`;
 
 	// tabSubtexts.forEach(tabSubtext => {
 	// 	console.log(tabSubtext);
