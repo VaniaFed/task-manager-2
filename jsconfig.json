@@ -12,6 +12,5 @@
 			"@utilities/*": ["./src/scss/utilities/*"]
 		}
 	},
-	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc"],
-	"include": [""]
+	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc"]
 }

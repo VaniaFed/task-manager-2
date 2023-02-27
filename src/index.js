@@ -1,6 +1,6 @@
 'use sctict';
 
-import './index.html';
+// import './index.html';
 import './index.scss';
 import './icons/cross-23.svg';
 

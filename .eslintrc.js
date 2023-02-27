@@ -28,6 +28,7 @@ module.exports = {
 		'no-console': 0,
 		'global-require': 0,
 		'prettier/prettier': 0,
+		'import/no-extraneous-dependencies': 0,
 	},
 	settings: {
 		'import/resolver': {
