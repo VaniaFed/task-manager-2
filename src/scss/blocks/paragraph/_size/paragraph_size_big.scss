@@ -1,15 +1,15 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 @mixin paragraph_size_big {
-    font-size: 23px;
-    font-weight: 700;
-    line-height: 28.06px;
+	font-size: 23px;
+	font-weight: 700;
+	line-height: 28.06px;
 
-    @include media-mobile {
-        font-size: 16px;
-        line-height: 22.72px;
-    }
+	@include media-mobile {
+		font-size: 16px;
+		line-height: 22.72px;
+	}
 }
 
 .paragraph_size_big {

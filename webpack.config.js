@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+const StylelintPlugin = require('stylelint-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development';
 
@@ -32,6 +34,8 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css',
 		}),
+		new ESLintPlugin(),
+		new StylelintPlugin(),
 	],
 	module: {
 		rules: [
@@ -48,11 +52,7 @@ module.exports = {
 						loader: 'postcss-loader',
 						options: {
 							postcssOptions: {
-								plugins: [
-									[
-										'postcss-preset-env',
-									],
-								],
+								plugins: [['postcss-preset-env']],
 							},
 						},
 					},
@@ -65,9 +65,7 @@ module.exports = {
 				use: {
 					loader: 'babel-loader',
 					options: {
-						presets: [
-							['@babel/preset-env', {targets: 'defaults'}],
-						],
+						presets: [['@babel/preset-env', { targets: 'defaults' }]],
 					},
 				},
 			},
@@ -76,30 +74,37 @@ module.exports = {
 				use: devMode
 					? []
 					: [
-						{
-							loader: 'image-webpack-loader',
-							options: {
-								mozjpeg: {
-									progressive: true,
-								},
-								optipng: {
-									enabled: false,
-								},
-								pngquant: {
-									quality: [0.65, 0.9],
-									speed: 4,
-								},
-								gifsicle: {
-									interlaced: false,
-								},
-								webp: {
-									quality: 75,
+							{
+								loader: 'image-webpack-loader',
+								options: {
+									mozjpeg: {
+										progressive: true,
+									},
+									optipng: {
+										enabled: false,
+									},
+									pngquant: {
+										quality: [0.65, 0.9],
+										speed: 4,
+									},
+									gifsicle: {
+										interlaced: false,
+									},
+									webp: {
+										quality: 75,
+									},
 								},
 							},
-						},
-					],
+					  ],
 				type: 'asset/resource',
 			},
 		],
+	},
+	resolve: {
+		alias: {
+			'@scss': path.resolve(__dirname, './src/scss/'),
+			'@blocks': path.resolve(__dirname, './src/scss/blocks/'),
+			'@utilities': path.resolve(__dirname, './src/scss/utilities/'),
+		},
 	},
 };

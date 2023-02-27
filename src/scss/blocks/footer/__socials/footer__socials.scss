@@ -1,19 +1,19 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 .footer__socials {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 24px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	padding: 24px 20px;
 
-    @include media-tablet {
-        flex-direction: column;
-    }
+	@include media-tablet {
+		flex-direction: column;
+	}
 
-    @include media-mobile {
-        padding: 20px;
-        row-gap: 7px;
-    }
+	@include media-mobile {
+		padding: 20px;
+		row-gap: 7px;
+	}
 }

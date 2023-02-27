@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"target": "ES2015",
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"paths": {
+			"@scss/*": ["./scr/scss/*"],
+			"@blocks/*": ["./src/scss/blocks/*"],
+			"@utilities/*": ["./src/scss/utilities/*"]
+		}
+	},
+	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc"],
+	"include": [""]
+}

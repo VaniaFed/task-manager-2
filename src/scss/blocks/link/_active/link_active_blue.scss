@@ -1,5 +1,5 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 @mixin link_active_blue {
 	&:active {

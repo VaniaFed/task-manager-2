@@ -1,28 +1,28 @@
-@import 'src/scss/blocks/paragraph/paragraph';
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@blocks/paragraph/paragraph';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 @mixin link {
-    @include paragraph;
-    text-decoration: none;
-    color: $color-black;
+	@include paragraph;
+	text-decoration: none;
+	color: $color-black;
 
-    &::after {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 1px;
-    }
+	&::after {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 1px;
+	}
 
-    &:hover::after {
-        background: $color-black;
-    }
-    
-    @include media-mobile {
-        word-wrap: break-word;
-    }
+	&:hover::after {
+		background: $color-black;
+	}
+
+	@include media-mobile {
+		word-wrap: break-word;
+	}
 }
 
 .link {
-    @include link;
+	@include link;
 }

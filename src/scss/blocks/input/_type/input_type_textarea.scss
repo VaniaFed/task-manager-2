@@ -1,9 +1,9 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
+@import '@utilities/variables';
+@import '@utilities/media';
+@import '@utilities/mixins';
 
 .input_type_textarea {
-    display: flex;
-    flex-direction: column;
-    resize: none;
+	display: flex;
+	flex-direction: column;
+	resize: none;
 }

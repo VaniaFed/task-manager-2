@@ -1,7 +1,6 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
-
+@import '@utilities/variables';
+@import '@utilities/media';
+@import '@utilities/mixins';
 
 .todo-footer {
 	display: flex;
@@ -12,13 +11,12 @@
 	@include media-laptop {
 		padding: 0px 12px;
 		flex-direction: column;
-    	gap: 24px;
+		gap: 24px;
 	}
 }
 
-
 .todo__item_completed .fake-control,
 .todo__item_completed .task__text {
-	opacity: .35;
+	opacity: 0.35;
 	text-decoration: line-through;
 }

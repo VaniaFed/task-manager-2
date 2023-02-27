@@ -1,11 +1,11 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
+@import '@utilities/variables';
+@import '@utilities/media';
+@import '@utilities/mixins';
 
 .todo__item_completed {
-	background: rgba(#d3d4d7, .6);
+	background: rgba(#d3d4d7, 0.6);
 
-    &:nth-child(2n) {
-        background: rgba(#d3d4d7, .6);
-    }
+	&:nth-child(2n) {
+		background: rgba(#d3d4d7, 0.6);
+	}
 }

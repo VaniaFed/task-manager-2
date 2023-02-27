@@ -9,20 +9,21 @@ const state = {
 	filter: 'All',
 };
 
-const addTask = ({name, id}) => (
-	[...state.tasks, {
+const addTask = ({ name, id }) => [
+	...state.tasks,
+	{
 		name,
 		status: 'Active',
 		id,
-	}]
-);
+	},
+];
 
-const updateTasks = newTaskState => {
+const updateTasks = (newTaskState) => {
 	state.tasks = newTaskState;
 };
 
 const setTaskStatusById = (id, status) => {
-	const newTasksState = state.tasks.map(task => {
+	const newTasksState = state.tasks.map((task) => {
 		if (task.id === Number(id)) {
 			return {
 				...task,
@@ -36,12 +37,12 @@ const setTaskStatusById = (id, status) => {
 	updateTasks(newTasksState);
 };
 
-const getTasksByStatus = status => state.tasks.filter(task => task.status === status);
+const getTasksByStatus = (status) => state.tasks.filter((task) => task.status === status);
 
-const getFilteredTasks = () => state.tasks.filter(task => task.status === state.filter);
+const getFilteredTasks = () => state.tasks.filter((task) => task.status === state.filter);
 
-const removeTaskById = id => {
-	const newTasksState = state.tasks.filter(task => task.id !== Number(id));
+const removeTaskById = (id) => {
+	const newTasksState = state.tasks.filter((task) => task.id !== Number(id));
 	updateTasks(newTasksState);
 };
 
@@ -54,8 +55,8 @@ const generateId = () => Math.floor(Math.random() * 1000);
 const filterControlls = document.querySelectorAll('.tab__item');
 
 const initClickFilter = () => {
-	filterControlls.forEach(currentFilter => {
-		currentFilter.addEventListener('click', e => {
+	filterControlls.forEach((currentFilter) => {
+		currentFilter.addEventListener('click', (e) => {
 			if (!e.target.classList.contains('tab__item_active')) {
 				removeAllActiveClasses();
 
@@ -73,12 +74,12 @@ const initClickFilter = () => {
 };
 
 const removeAllActiveClasses = () => {
-	filterControlls.forEach(filterEl => {
+	filterControlls.forEach((filterEl) => {
 		filterEl.classList.remove('tab__item_active');
 	});
 };
 
-const updateActiveFilter = val => {
+const updateActiveFilter = (val) => {
 	state.filter = val;
 };
 
@@ -89,7 +90,7 @@ const tasksList = document.getElementsByClassName('todo__list')[0];
 const tasksNumber = document.getElementsByClassName('tasks-number')[0];
 
 const initAddTaskOnEnter = () => {
-	input.addEventListener('keypress', e => {
+	input.addEventListener('keypress', (e) => {
 		if (e.key === 'Enter') {
 			handleAddTask(e);
 		}
@@ -97,12 +98,12 @@ const initAddTaskOnEnter = () => {
 };
 
 const initAddTaskOnFocusOut = () => {
-	input.addEventListener('blur', e => {
+	input.addEventListener('blur', (e) => {
 		handleAddTask(e);
 	});
 };
 
-const handleAddTask = e => {
+const handleAddTask = (e) => {
 	if (e.key === 'Enter' || e.type === 'blur') {
 		const taskInputName = e.target.value;
 		if (taskInputName) {
@@ -121,8 +122,8 @@ const handleAddTask = e => {
 
 const initRemoveTask = () => {
 	const removeBtns = document.querySelectorAll('.todo-task__remove-btn');
-	removeBtns.forEach(btn => {
-		btn.addEventListener('click', e => {
+	removeBtns.forEach((btn) => {
+		btn.addEventListener('click', (e) => {
 			const taskId = e.target.parentNode.parentNode.dataset.id;
 			removeTaskById(taskId);
 			reinit();
@@ -132,8 +133,8 @@ const initRemoveTask = () => {
 
 const initPressTask = () => {
 	const tasksList = document.querySelectorAll('.todo-task');
-	tasksList.forEach(task => {
-		task.addEventListener('click', e => {
+	tasksList.forEach((task) => {
+		task.addEventListener('click', (e) => {
 			if (!e.target.classList.contains('todo-task__remove-btn')) {
 				const taskId = task.dataset.id;
 				if (!task.classList.contains('todo__item_completed')) {
@@ -165,7 +166,7 @@ const renderTasks = () => {
 
 	if (tasks.length > 0) {
 		tasksList.classList.remove('hidden-hard');
-		tasks.forEach(task => {
+		tasks.forEach((task) => {
 			tasksList.prepend(newTaskElement(task.name, task.id, task.status));
 		});
 	} else {
@@ -183,7 +184,9 @@ const newTaskElement = (taskName, id, status) => {
 	}
 
 	taskElement.dataset.id = id;
-	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${status === 'Completed' && 'checked'} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="assets/cross-23.svg" alt="Remove"></div>`;
+	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${
+		status === 'Completed' && 'checked'
+	} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${taskName}</p><img class="todo-task__remove-btn" src="assets/cross-23.svg" alt="Remove"></div>`;
 	return taskElement;
 };
 
@@ -312,7 +315,7 @@ input.addEventListener('blur', () => {
 	clearInputIcon.classList.remove('todo__input-wrapper_icon_shown');
 });
 
-input.addEventListener('keydown', e => {
+input.addEventListener('keydown', (e) => {
 	console.log(e.key);
 	if (e.key === 'Escape' || e.key === 'Tab') {
 		input.value = '';
@@ -327,9 +330,9 @@ document.addEventListener('keypress', () => {
 const showNoTasksIfNecessary = () => {
 	const noTasks = document.querySelector('.no-tasks');
 	if (
-		(state.tasks.length === 0 && state.filter === 'All')
-		|| (getTasksByStatus('Active').length === 0 && state.filter === 'Active')
-		|| (getTasksByStatus('Completed').length === 0 && state.filter === 'Completed')
+		(state.tasks.length === 0 && state.filter === 'All') ||
+		(getTasksByStatus('Active').length === 0 && state.filter === 'Active') ||
+		(getTasksByStatus('Completed').length === 0 && state.filter === 'Completed')
 	) {
 		noTasks.classList.remove('hidden-hard');
 		switch (state.filter) {

@@ -1,17 +1,17 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 .header__nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
 
-    @include media-laptop {
-        padding: 0 24px;
-    }
+	@include media-laptop {
+		padding: 0 24px;
+	}
 
-    @include media-mobile {
-        padding: 0 20px;
-    }
+	@include media-mobile {
+		padding: 0 20px;
+	}
 }

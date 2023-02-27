@@ -1,25 +1,44 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
+		es2022: true,
 	},
-	extends: 'xo',
-	overrides: [
-		{
-			extends: [
-				'xo-typescript',
-			],
-			files: [
-				'*.ts',
-				'*.tsx',
-			],
-		},
-	],
+	extends: ['eslint:recommended', 'airbnb', 'prettier', 'plugin:prettier/recommended'],
+	plugins: ['prettier'],
+	parser: '@babel/eslint-parser',
 	parserOptions: {
-		ecmaVersion: 'latest',
+		requireConfigFile: false,
+		babelOptions: {
+			babelrc: false,
+			configFile: false,
+			presets: ['@babel/preset-env'],
+		},
 	},
 	rules: {
-		'capitalized-comments': 'off',
-		'no-negated-condition': 'off',
+		'capitalized-comments': 0,
+		'no-negated-condition': 0,
+		'arrow-parens': 0,
+		'no-param-reassign': 2,
+		'no-use-before-define': 2,
+		'linebreak-style': ['error', 'unix'],
+		quotes: ['error', 'single'],
+		indent: ['error', 'tab'],
+		'implicit-arrow-linebreak': 2,
+		'consistent-return': 0,
+		'no-console': 0,
+		'global-require': 0,
+		'prettier/prettier': 0,
+	},
+	settings: {
+		'import/resolver': {
+			alias: {
+				map: [
+					['@scss', './src/scss'],
+					['@blocks', './src/scss/blocks'],
+					['@utilities', './src/scss/utilities'],
+				],
+				extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss'],
+			},
+		},
 	},
 };

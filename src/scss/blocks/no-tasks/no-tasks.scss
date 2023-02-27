@@ -1,6 +1,6 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
-@import 'src/scss/utilities/mixins';
+@import '@utilities/variables';
+@import '@utilities/media';
+@import '@utilities/mixins';
 
 .no-tasks {
 	display: flex;
@@ -11,5 +11,5 @@
 	max-height: 370px;
 	min-height: 180px;
 
-	opacity: .7;
+	opacity: 0.7;
 }

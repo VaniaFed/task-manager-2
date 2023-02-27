@@ -1,11 +1,11 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 @mixin link_fb {
 	position: relative;
 
 	&::before {
-	    content: url(icons/fb.svg);
+		content: url(icons/fb.svg);
 		position: absolute;
 		left: -36px;
 

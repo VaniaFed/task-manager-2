@@ -1,6 +1,6 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 .page__header {
-    height: 88px;
+	height: 88px;
 }

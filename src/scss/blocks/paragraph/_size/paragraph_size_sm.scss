@@ -1,15 +1,15 @@
-@import 'src/scss/utilities/variables';
-@import 'src/scss/utilities/media';
+@import '@utilities/variables';
+@import '@utilities/media';
 
 @mixin paragraph_size_sm {
-    font-size: 17px;
-    line-height: 24.14px;
-    letter-spacing: -.01em;
+	font-size: 17px;
+	line-height: 24.14px;
+	letter-spacing: -0.01em;
 
-    @include media-mobile {
-        font-size: 16px;
-        line-height: 22.72px; 
-    }
+	@include media-mobile {
+		font-size: 16px;
+		line-height: 22.72px;
+	}
 }
 
 .paragraph_size_sm {
