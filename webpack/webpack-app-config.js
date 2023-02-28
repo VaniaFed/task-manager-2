@@ -17,6 +17,6 @@ module.exports = {
 			chunkFilename: '[id].[chunkhash].css',
 		}),
 		// new ESLintPlugin(),
-		// new StylelintPlugin(),
+		new StylelintPlugin(),
 	],
 };

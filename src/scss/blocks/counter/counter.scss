@@ -4,7 +4,7 @@
 @import '@utilities/media';
 @import '@utilities/mixins';
 
-.subtext {
+.counter {
 	@include paragraph;
 	@include paragraph_size_sm;
 	color: #a6a6a6;

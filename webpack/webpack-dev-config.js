@@ -1,10 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 
 const path = require('path');
 
 module.exports = {
 	target: 'web',
-	devtool: 'source-map',
+	devtool: false,
 	module: {
 		rules: [
 			{
@@ -30,6 +31,7 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new webpack.SourceMapDevToolPlugin({}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, '../', 'src/', 'index.html'),
 			filename: 'index.html',
