@@ -1,5 +1,13 @@
-import { addTask, createTask, removeTaskById, setActive, setCompleted } from './tasks.model';
-import { appendTaskToDOM, removeTaskFromDOM, renderTasks } from './tasks.view';
+import { addTask, createTask, getTasks, removeTaskById, setActive, setCompleted } from './tasks.model';
+import {
+	appendTaskToDOM,
+	hideTasks,
+	markTaskAsActive,
+	markTaskAsCompleted,
+	removeTaskFromDOM,
+	renderTasks,
+	showEmptyState,
+} from './tasks.view';
 
 const input = document.querySelector('.input');
 
@@ -9,9 +17,14 @@ const clearInput = () => {
 
 const removeTaskListener = (element) => {
 	element.addEventListener('click', ({ target }) => {
-		const taskId = target.parentNode.parentNode.dataset.id;
-		removeTaskById(taskId);
-		removeTaskFromDOM(taskId);
+		const { id } = target.parentNode.parentNode.dataset;
+		removeTaskById(id);
+		removeTaskFromDOM(id);
+
+		if (getTasks().length === 0) {
+			hideTasks();
+			showEmptyState();
+		}
 	});
 };
 
@@ -36,15 +49,13 @@ const reinit = () => {
 export const pressTaskListener = (task) => {
 	task.addEventListener('click', ({ target }) => {
 		if (!target.classList.contains('todo-task__remove-btn')) {
-			const taskId = task.dataset.id;
+			const { id } = task.dataset;
 			if (!task.classList.contains('todo__item_completed')) {
-				setCompleted(taskId);
-				task.classList.add('todo__item_completed');
-				task.getElementsByClassName('checkbox__input')[0].checked = true;
+				setCompleted(id);
+				markTaskAsCompleted(task);
 			} else {
-				setActive(taskId);
-				task.classList.remove('todo__item_completed');
-				task.getElementsByClassName('checkbox__input')[0].checked = false;
+				setActive(id);
+				markTaskAsActive(task);
 			}
 
 			// if (state.filter === 'Active' || state.filter === 'Completed') {

@@ -22,7 +22,7 @@ module.exports = {
 		'no-use-before-define': 2,
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],
-		indent: ['error', 'tab'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'implicit-arrow-linebreak': 2,
 		'consistent-return': 0,
 		'no-console': 0,
