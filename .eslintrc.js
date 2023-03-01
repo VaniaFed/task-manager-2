@@ -18,7 +18,7 @@ module.exports = {
 		'capitalized-comments': 0,
 		'no-negated-condition': 0,
 		'arrow-parens': 0,
-		'no-param-reassign': 2,
+		'no-param-reassign': [2, { props: false }],
 		'no-use-before-define': 2,
 		'linebreak-style': ['error', 'unix'],
 		quotes: ['error', 'single'],
@@ -35,6 +35,7 @@ module.exports = {
 		'import/resolver': {
 			alias: {
 				map: [
+					['@js', './src/js'],
 					['@scss', './src/scss'],
 					['@blocks', './src/blocks'],
 					['@utilities', './src/utilities'],

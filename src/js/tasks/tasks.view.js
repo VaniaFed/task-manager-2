@@ -15,6 +15,7 @@ const createTaskElement = ({ id, status, value }, listeners = []) => {
 	}
 
 	taskElement.dataset.id = id;
+	taskElement.dataset.status = status;
 	taskElement.innerHTML = `<div class="checkbox todo-task__checkbox"><input type="checkbox" ${
 		status === 'Completed' && 'checked'
 	} class="checkbox__input"> <span class="fake-control fake-control_type_checkbox"></span><p class="task__text">${value}</p><img class="todo-task__remove-btn" src="assets/cross-23.svg" alt="Remove"></div>`;
@@ -79,31 +80,6 @@ export const showEmptyState = () => {
 	formEmptyState();
 };
 
-const shouldShowEmptyState = () =>
-	(getTasks().length === 0 && getFilter() === 'All') ||
-	(getTasksByStatus('Active').length === 0 && getFilter() === 'Active') ||
-	(getTasksByStatus('Completed').length === 0 && getFilter() === 'Completed');
-
-export const renderTasks = () => {
-	const tasks = shouldFilter() ? getTasksByStatus(getFilter()) : getTasks();
-
-	if (tasks.length > 0) {
-		tasksList.innerHTML = '';
-		showTasks();
-		tasks.forEach((task) => {
-			tasksList.prepend(createTaskElement(task));
-		});
-	} else {
-		hideTasks();
-	}
-
-	if (shouldShowEmptyState()) {
-		showEmptyState();
-	} else {
-		hideEmptyState();
-	}
-};
-
 export const removeTaskFromDOM = (id) => {
 	tasksList.childNodes.forEach((task) => {
 		if (task.dataset.id === id) {
@@ -113,6 +89,7 @@ export const removeTaskFromDOM = (id) => {
 };
 
 export const appendTaskToDOM = (task, listeners) => {
+	// вынести отсюда
 	if (tasksList.classList.contains('hidden-hard')) {
 		showTasks();
 		hideEmptyState();
@@ -128,4 +105,39 @@ export const markTaskAsCompleted = (task) => {
 export const markTaskAsActive = (task) => {
 	task.classList.remove('todo__item_completed');
 	task.getElementsByClassName('checkbox__input')[0].checked = false;
+};
+
+export const isNoTasks = () => getTasks().length === 0 && getFilter() === 'All';
+export const isNoActiveTasks = () => getTasksByStatus('Active').length === 0 && getFilter() === 'Active';
+export const isNoCompletedTasks = () => getTasksByStatus('Completed').length === 0 && getFilter() === 'Completed';
+
+export const shouldShowEmptyState = () => isNoTasks() || isNoActiveTasks() || isNoCompletedTasks();
+
+export const renderTasks = (listeners) => {
+	const tasks = shouldFilter() ? getTasksByStatus(getFilter()) : getTasks();
+
+	if (tasks.length > 0) {
+		tasksList.innerHTML = '';
+		showTasks();
+		tasks.forEach((task) => {
+			appendTaskToDOM(task, listeners);
+			// tasksList.prepend(createTaskElement(task));
+		});
+	} else {
+		hideTasks();
+	}
+
+	if (shouldShowEmptyState()) {
+		showEmptyState();
+	} else {
+		hideEmptyState();
+	}
+};
+
+export const removeCompletedTasksFromDOM = () => {
+	[...tasksList.childNodes].forEach((task) => {
+		if (task.classList.contains('todo__item_completed')) {
+			task.remove();
+		}
+	});
 };

@@ -27,6 +27,13 @@ export const removeTaskById = (id) => {
 	updateTasks(filtered);
 };
 
+export const removeTasksByStatus = (status) => {
+	const tasks = getTasks();
+
+	const filtered = tasks.filter((task) => task.status !== status);
+	updateTasks(filtered);
+};
+
 const changeStatus = (task, status) => ({ ...task, status });
 
 export const setStatusById = (id, status) => {

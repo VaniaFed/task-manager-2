@@ -16,9 +16,27 @@ import {
 } from './js/tasks/tasks.model';
 import { getFilter, setFilter } from './js/filter/filter.model';
 import './js/tasks/tasks.controller';
+import './js/filter/filter.controller';
+import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 
 import { createTaskElement, renderTasks } from './js/tasks/tasks.view';
 
+import { updateTodoTitle } from '@blocks/todo-title/todo-title.view';
+
+import { updateFilterCounter } from '@blocks/tab/__counter/filter__counter.view';
+import { updateClearCompletedVisibility } from '@blocks/clear-completed/clear-completed.view';
+import { pressClearComplitedListener } from '@blocks/clear-completed/clear-completed.controller';
+
+const onInit = () => {
+	updateTodoTitle(getFilter());
+
+	updateTodoTitleCounter();
+	updateFilterCounter();
+	updateClearCompletedVisibility();
+	pressClearComplitedListener();
+};
+
+onInit();
 // const task = getTasks()[0];
 // console.log(createTaskElement(task));
 // setFilter('All');
@@ -27,7 +45,6 @@ import { createTaskElement, renderTasks } from './js/tasks/tasks.view';
 // addTask('kljdsflj');
 // removeTaskById(453);
 // setActive(488);
-setCompleted(953);
 // console.log(setFilter('Completed'));
 
 // renderTasks();
@@ -42,40 +59,7 @@ setCompleted(953);
 
 // // Filter view
 
-// const filterControlls = document.querySelectorAll('.tab__item');
-
-// const initClickFilter = () => {
-// 	filterControlls.forEach((currentFilter) => {
-// 		currentFilter.addEventListener('click', (e) => {
-// 			if (!e.target.classList.contains('tab__item_active')) {
-// 				removeAllActiveClasses();
-
-// 				e.target.classList.add('tab__item_active');
-
-// 				const currentFilter = e.target.dataset.filter;
-// 				updateActiveFilter(currentFilter);
-
-// 				updateTitle();
-
-// 				reinit();
-// 			}
-// 		});
-// 	});
-// };
-
-// const removeAllActiveClasses = () => {
-// 	filterControlls.forEach((filterEl) => {
-// 		filterEl.classList.remove('tab__item_active');
-// 	});
-// };
-
-// const updateActiveFilter = (val) => {
-// 	state.filter = val;
-// };
-
 // // Tasks view
-
-// const tasksNumber = document.getElementsByClassName('tasks-number')[0];
 
 // const updateNumberTask = () => {
 // 	tasksNumber.innerText = `${getTasksByStatus('Active').length} осталось`;
@@ -172,34 +156,3 @@ setCompleted(953);
 // initClickFilter();
 
 // initClearCompleted();
-
-// input.focus();
-
-// const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
-// clearInputIcon.addEventListener('mousedown', () => {
-// 	input.value = '';
-// });
-
-// initAddTaskOnFocusOut();
-
-// input.addEventListener('focus', () => {
-// 	const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
-// 	clearInputIcon.classList.add('todo__input-wrapper_icon_shown');
-// });
-
-// input.addEventListener('blur', () => {
-// 	const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
-// 	clearInputIcon.classList.remove('todo__input-wrapper_icon_shown');
-// });
-
-// input.addEventListener('keydown', (e) => {
-// 	console.log(e.key);
-// 	if (e.key === 'Escape' || e.key === 'Tab') {
-// 		input.value = '';
-// 		input.blur();
-// 	}
-// });
-
-// document.addEventListener('keypress', () => {
-// 	input.focus();
-// });
