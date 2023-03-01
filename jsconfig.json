@@ -8,8 +8,8 @@
 		"strictFunctionTypes": true,
 		"paths": {
 			"@scss/*": ["./scr/scss/*"],
-			"@blocks/*": ["./src/scss/blocks/*"],
-			"@utilities/*": ["./src/scss/utilities/*"]
+			"@blocks/*": ["./src/blocks/*"],
+			"@utilities/*": ["./src/utilities/*"]
 		}
 	},
 	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc"]

@@ -1,4 +1,4 @@
-import { generateId } from '../utilities/utilities';
+import { generateId } from '@utilities/utilities';
 
 export const getTasks = () => JSON.parse(localStorage.getItem('tasks'));
 

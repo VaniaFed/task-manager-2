@@ -36,8 +36,8 @@ module.exports = {
 			alias: {
 				map: [
 					['@scss', './src/scss'],
-					['@blocks', './src/scss/blocks'],
-					['@utilities', './src/scss/utilities'],
+					['@blocks', './src/blocks'],
+					['@utilities', './src/utilities'],
 				],
 				extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss'],
 			},

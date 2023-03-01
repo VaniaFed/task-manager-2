@@ -4,8 +4,8 @@ module.exports = {
 	resolve: {
 		alias: {
 			'@scss': path.resolve(__dirname, '../src/scss/'),
-			'@blocks': path.resolve(__dirname, '../src/scss/blocks/'),
-			'@utilities': path.resolve(__dirname, '../src/scss/utilities/'),
+			'@blocks': path.resolve(__dirname, '../src/blocks/'),
+			'@utilities': path.resolve(__dirname, '../src/utilities/'),
 		},
 	},
 };
