@@ -52,7 +52,7 @@
 				<div class="todo-content">
 					<h2 class="todo-title">Все задачи <span class="todo-title__counter counter">(0)</span></h2>
 					<div class="todo-content__wrapper">
-						<div class="todo__list hidden"></div>
+						<div class="todo__list"></div>
 						<div class="empty-state">
 							<img class="empty-state__image" src="icons/start work.svg" alt="Start work" />
 							<p class="empty-state__text paragraph"></p>
@@ -60,23 +60,23 @@
 					</div>
 				</div>
 				<div class="todo-footer">
-					<ul class="filter">
+					<ul class="todo-footer__filter filter">
 						<li class="filter__item" data-filter="All">
 							<button class="filter__content">
 								Все
-								<span class="counter filter__counter" data="all-filter-counter">(0)</span>
+								<span class="filter__counter counter" data="all-filter-counter">(0)</span>
 							</button>
 						</li>
 						<li class="filter__item" data-filter="Active">
 							<button class="filter__content">
 								Активные
-								<span class="counter filter__counter" data="active-filter-counter">(0)</span>
+								<span class="filter__counter counter" data="active-filter-counter">(0)</span>
 							</button>
 						</li>
 						<li class="filter__item" data-filter="Completed">
 							<button class="filter__content">
 								Завершенные
-								<span class="counter filter__counter" data="completed-filter-counter">(0)</span>
+								<span class="filter__counter counter" data="completed-filter-counter">(0)</span>
 							</button>
 						</li>
 					</ul>

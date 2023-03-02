@@ -10,10 +10,9 @@ const applyListeners = (elements, listeners) => {
 const createTaskElement = ({ id, status, value }, listeners = []) => {
 	const taskElement = document.createElement('div');
 	taskElement.classList.add('todo-task');
-	taskElement.classList.add('todo__item');
 
 	if (status === 'Completed') {
-		taskElement.classList.add('todo__item_completed');
+		taskElement.classList.add('todo-task_completed');
 	}
 
 	taskElement.dataset.id = id;
@@ -32,14 +31,6 @@ const shouldFilter = () => getFilter() !== 'All';
 
 const tasksList = document.getElementsByClassName('todo__list')[0];
 
-export const hideTasks = () => {
-	tasksList.classList.add('hidden');
-};
-
-export const showTasks = () => {
-	tasksList.classList.remove('hidden');
-};
-
 export const removeTaskFromDOM = (id) => {
 	tasksList.childNodes.forEach((task) => {
 		if (task.dataset.id === id) {
@@ -50,47 +41,37 @@ export const removeTaskFromDOM = (id) => {
 };
 
 export const appendTaskToDOM = (task, listeners) => {
-	// следует вынести отсюда
-	if (tasksList.classList.contains('hidden')) {
-		showTasks();
-		hideEmptyState();
-	}
 	tasksList.prepend(createTaskElement(task, listeners));
 };
 
 export const markTaskAsCompleted = (task) => {
-	task.classList.add('todo__item_completed');
+	task.classList.add('todo-task_completed');
 	task.getElementsByClassName('checkbox__input')[0].checked = true;
 };
 
 export const markTaskAsActive = (task) => {
-	task.classList.remove('todo__item_completed');
+	task.classList.remove('todo-task_completed');
 	task.getElementsByClassName('checkbox__input')[0].checked = false;
 };
 
 export const renderTasks = (listeners) => {
 	const tasks = shouldFilter() ? getTasksByStatus(getFilter()) : getTasks();
 
-	if (tasks.length > 0) {
-		tasksList.innerHTML = '';
-		showTasks();
-		tasks.forEach((task) => {
-			appendTaskToDOM(task, listeners);
-		});
-	} else {
-		hideTasks();
-	}
+	tasksList.innerHTML = '';
 
 	if (shouldShowEmptyState()) {
 		showEmptyState();
 	} else {
 		hideEmptyState();
+		tasks.forEach((task) => {
+			appendTaskToDOM(task, listeners);
+		});
 	}
 };
 
 export const removeCompletedTasksFromDOM = () => {
 	[...tasksList.childNodes].forEach((task) => {
-		if (task.classList.contains('todo__item_completed')) {
+		if (task.classList.contains('todo-task_completed')) {
 			task.remove();
 		}
 	});

@@ -1,0 +1,17 @@
+@import '@utilities/variables';
+@import '@utilities/media';
+@import '@utilities/mixins';
+
+.todo-task_completed {
+	background: rgba($color-gray-75, 0.6);
+
+	&:nth-child(2n) {
+		background: rgba($color-gray-75, 0.6);
+	}
+
+	& .fake-control,
+	& .task__text {
+		opacity: 0.35;
+		text-decoration: line-through;
+	}
+}

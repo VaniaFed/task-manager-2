@@ -2,5 +2,7 @@
 @import '@utilities/media';
 
 .page__header {
+	display: flex;
+	flex-shrink: 0;
 	height: 88px;
 }

@@ -1,16 +1,47 @@
+import { hideClearInputIcon, showClearInputIcon } from '../__input-wrapper/__icon/todo__input-wrapper__icon.view';
+import { handleAddTask } from '../__task/todo__task.controller';
+
 const input = document.querySelector('.input');
-const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
 
 export const clearInput = () => {
 	input.value = '';
 };
 
 input.addEventListener('focus', () => {
-	clearInputIcon.classList.add('todo__input-wrapper_icon_shown');
+	showClearInputIcon();
 });
 
 input.addEventListener('blur', () => {
-	clearInputIcon.classList.remove('todo__input-wrapper_icon_shown');
+	hideClearInputIcon();
+});
+
+export const initAddTaskOnEnter = () => {
+	input.addEventListener('keypress', (e) => {
+		if (e.key === 'Enter') {
+			handleAddTask(e);
+		}
+	});
+};
+
+const initAddTaskOnFocusOut = () => {
+	input.addEventListener('blur', (e) => {
+		handleAddTask(e);
+	});
+};
+
+input.addEventListener('keydown', (e) => {
+	console.log(e.key);
+	if (e.key === 'Escape' || e.key === 'Tab') {
+		input.value = '';
+		input.blur();
+	}
+});
+
+document.addEventListener('keypress', () => {
+	input.focus();
 });
 
 input.focus();
+
+initAddTaskOnEnter();
+initAddTaskOnFocusOut();

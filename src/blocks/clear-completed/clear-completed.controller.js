@@ -3,7 +3,7 @@ import { showEmptyState } from '@blocks/todo/__empty-state/todo__empty-state.vie
 import { updateFilterCounter } from '@blocks/filter/__counter/filter__counter.view';
 import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 import { removeTasksByStatus } from '@blocks/todo/__task/todo__task.model';
-import { hideTasks, removeCompletedTasksFromDOM } from '@blocks/todo/__task/todo__task.view';
+import { removeCompletedTasksFromDOM } from '@blocks/todo/__task/todo__task.view';
 import { updateClearCompletedVisibility } from './clear-completed.view';
 
 const clearCompleted = document.querySelector('.clear-completed');
@@ -17,7 +17,6 @@ export const pressClearComplitedListener = () => {
 		updateClearCompletedVisibility();
 
 		if (shouldShowEmptyState()) {
-			hideTasks();
 			showEmptyState();
 		}
 	});

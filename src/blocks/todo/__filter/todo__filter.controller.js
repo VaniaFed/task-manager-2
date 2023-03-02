@@ -15,12 +15,11 @@ const initClickFilter = () => {
 			const filter = e.target;
 			if (shouldFilter(filter)) {
 				removeAllActiveClasses(filterControll);
-
 				makeFilterActive(filter);
 
 				const filterValue = filter.dataset.filter;
-
 				setFilter(filterValue);
+
 				updateTodoTitle(filterValue);
 				updateTodoTitleCounter();
 

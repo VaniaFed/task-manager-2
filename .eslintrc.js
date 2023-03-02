@@ -30,6 +30,8 @@ module.exports = {
 		'prettier/prettier': 0,
 		'import/no-extraneous-dependencies': 0,
 		'import/prefer-default-export': 0,
+		'import/no-cycle': 0,
+		'no-underscore-dangle': 0,
 	},
 	settings: {
 		'import/resolver': {
