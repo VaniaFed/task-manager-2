@@ -1,7 +1,7 @@
-import { updateFilterCounter } from '@blocks/tab/__counter/filter__counter.view';
+import { updateFilterCounter } from '@blocks/filter/__counter/filter__counter.view';
 import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 import { updateClearCompletedVisibility } from '@blocks/clear-completed/clear-completed.view';
-import { getFilter } from '../filter/filter.model';
+import { getFilter } from '@blocks/filter/filter.model';
 import { addTask, createTask, removeTaskById, setActive, setCompleted } from './tasks.model';
 import {
 	appendTaskToDOM,
@@ -46,17 +46,6 @@ const initRemoveTask = () => {
 	});
 };
 
-// const reinit = () => {
-// renderTasks();
-// initRemoveTask();
-// showNoTasksIfNecessary();
-// initPressTask();
-// initRemoveTask();
-// updateNumberTask();
-// initCounterValue();
-// toggleClearCompletedVisibility();
-// };
-
 export const pressTaskListener = (task) => {
 	task.addEventListener('click', ({ target }) => {
 		if (!target.classList.contains('todo-task__remove-btn')) {
@@ -81,15 +70,6 @@ export const pressTaskListener = (task) => {
 				hideTasks();
 				showEmptyState();
 			}
-
-			// if (state.filter === 'Active' || state.filter === 'Completed') {
-			// 	reinit();
-			// } else {
-			// 	updateNumberTask();
-			// 	initCounterValue();
-			// }
-
-			// toggleClearCompletedVisibility();
 		}
 	});
 };

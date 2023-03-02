@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { getTasks, getTasksByStatus } from '@js/tasks/tasks.model';
-import { getFilter } from '@js/filter/filter.model';
+import { getFilter } from '@blocks/filter/filter.model';
 
 const todoTitleCounter = document.querySelector('.todo-title__counter');
 

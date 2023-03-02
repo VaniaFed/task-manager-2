@@ -1,5 +1,5 @@
+import { getFilter } from '@blocks/filter/filter.model';
 import { getTasks, getTasksByStatus } from './tasks.model';
-import { getFilter } from '../filter/filter.model';
 
 const applyListeners = (elements, listeners) => {
 	listeners.forEach((listener, index) => listener(elements[index]));
@@ -31,36 +31,36 @@ const shouldFilter = () => getFilter() !== 'All';
 const tasksList = document.getElementsByClassName('todo__list')[0];
 
 export const hideTasks = () => {
-	tasksList.classList.add('hidden-hard');
+	tasksList.classList.add('hidden');
 };
 
 export const showTasks = () => {
-	tasksList.classList.remove('hidden-hard');
+	tasksList.classList.remove('hidden');
 };
 
-const emptyState = document.querySelector('.no-tasks');
+const emptyState = document.querySelector('.empty-state');
 
 const formEmptyState = () => {
-	const noTasksImage = document.querySelector('.no-tasks__image');
-	const noTasksText = document.querySelector('.no-tasks__text');
+	const noTasksImage = document.querySelector('.empty-state__image');
+	const noTasksText = document.querySelector('.empty-state__text');
 
 	switch (getFilter()) {
 		case 'All': {
-			noTasksImage.classList.remove('hidden-hard');
+			noTasksImage.classList.remove('hidden');
 			noTasksText.innerText = 'Как-то пустовато... Добавим новую задачу?';
 
 			break;
 		}
 
 		case 'Active': {
-			noTasksImage.classList.add('hidden-hard');
+			noTasksImage.classList.add('hidden');
 			noTasksText.innerText = 'Активных задач пока нет';
 
 			break;
 		}
 
 		case 'Completed': {
-			noTasksImage.classList.add('hidden-hard');
+			noTasksImage.classList.add('hidden');
 			noTasksText.innerText = 'Вы еще не закончили ни одну задачу';
 
 			break;
@@ -72,11 +72,11 @@ const formEmptyState = () => {
 };
 
 export const hideEmptyState = () => {
-	emptyState.classList.add('hidden-hard');
+	emptyState.classList.add('hidden');
 };
 
 export const showEmptyState = () => {
-	emptyState.classList.remove('hidden-hard');
+	emptyState.classList.remove('hidden');
 	formEmptyState();
 };
 
@@ -84,13 +84,14 @@ export const removeTaskFromDOM = (id) => {
 	tasksList.childNodes.forEach((task) => {
 		if (task.dataset.id === id) {
 			task.remove();
+			return 0;
 		}
 	});
 };
 
 export const appendTaskToDOM = (task, listeners) => {
 	// вынести отсюда
-	if (tasksList.classList.contains('hidden-hard')) {
+	if (tasksList.classList.contains('hidden')) {
 		showTasks();
 		hideEmptyState();
 	}
@@ -121,7 +122,6 @@ export const renderTasks = (listeners) => {
 		showTasks();
 		tasks.forEach((task) => {
 			appendTaskToDOM(task, listeners);
-			// tasksList.prepend(createTaskElement(task));
 		});
 	} else {
 		hideTasks();

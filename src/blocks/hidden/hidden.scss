@@ -3,10 +3,5 @@
 @import '@utilities/mixins';
 
 .hidden {
-	opacity: 0;
-	pointer-events: none;
-
-	@include media-laptop {
-		display: none;
-	}
+	display: none !important;
 }

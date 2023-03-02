@@ -28,7 +28,6 @@
 @import '@blocks/fake-control/_type/fake-control_type_checkbox';
 
 @import '@blocks/hidden/hidden';
-@import '@blocks/hidden-hard/hidden-hard';
 
 @import '@blocks/link/link';
 @import '@blocks/link/_active/link_active_blue';
@@ -39,9 +38,9 @@
 @import '@blocks/login/login';
 @import '@blocks/login/__item/login__item';
 
-@import '@blocks/no-tasks/no-tasks';
-@import '@blocks/no-tasks/__image/no-tasks__image';
-@import '@blocks/no-tasks/__text/no-tasks__text';
+@import '@blocks/empty-state/empty-state';
+@import '@blocks/empty-state/__image/empty-state__image';
+@import '@blocks/empty-state/__text/empty-state__text';
 
 @import '@blocks/paragraph/paragraph';
 @import '@blocks/paragraph/_size/paragraph_size_sm';
@@ -49,10 +48,10 @@
 
 @import '@blocks/counter/counter';
 
-@import '@blocks/tab/tab';
-@import '@blocks/tab/__item/tab__item';
-@import '@blocks/tab/__item/_active/tab__item_active';
-@import '@blocks/tab/__content/tab__content';
+@import '@blocks/filter/filter';
+@import '@blocks/filter/__item/filter__item';
+@import '@blocks/filter/__item/_active/filter__item_active';
+@import '@blocks/filter/__content/filter__content';
 
 @import '@blocks/title/title';
 @import '@blocks/title/_size/title_size_2';

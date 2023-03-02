@@ -2,6 +2,6 @@
 @import '@utilities/media';
 @import '@utilities/mixins';
 
-.hidden-hard {
-	display: none !important;
+.empty-state__image {
+	max-width: 180px;
 }

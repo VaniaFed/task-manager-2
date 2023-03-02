@@ -1,4 +1,4 @@
-import { updateFilterCounter } from '@blocks/tab/__counter/filter__counter.view';
+import { updateFilterCounter } from '@blocks/filter/__counter/filter__counter.view';
 import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 import { removeTasksByStatus } from '@js/tasks/tasks.model';
 import { hideTasks, shouldShowEmptyState, showEmptyState, removeCompletedTasksFromDOM } from '@js/tasks/tasks.view';

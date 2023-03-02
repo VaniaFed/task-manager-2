@@ -1,12 +1,13 @@
 @import '@utilities/variables';
 @import '@utilities/media';
 
-.tab {
+.filter {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 	column-gap: 30px;
 	row-gap: 10px;
+	height: 38px;
 
 	@include media-tablet {
 		column-gap: 10px;
