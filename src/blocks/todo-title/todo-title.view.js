@@ -1,6 +1,5 @@
 const todoTitle = document.querySelector('.todo-title').childNodes[0];
 
-// todoTitle.textContent
 export const updateTodoTitle = (filter) => {
 	switch (filter) {
 		case 'All':

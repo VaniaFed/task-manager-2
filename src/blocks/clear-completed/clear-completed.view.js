@@ -1,4 +1,4 @@
-import { getTasksByStatus } from '@js/tasks/tasks.model';
+import { getTasksByStatus } from '@blocks/todo/__task/todo__task.model';
 
 const clearCompleted = document.querySelector('.clear-completed');
 

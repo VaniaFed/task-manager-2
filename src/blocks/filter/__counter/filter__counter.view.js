@@ -1,4 +1,4 @@
-import { getTasks, getTasksByStatus } from '@js/tasks/tasks.model';
+import { getTasks, getTasksByStatus } from '@blocks/todo/__task/todo__task.model';
 
 const allFilterCounter = document.querySelector('[data=all-filter-counter]');
 const activeFilterCounter = document.querySelector('[data=active-filter-counter]');

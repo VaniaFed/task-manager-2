@@ -1,5 +1,7 @@
-import { getFilter } from '@blocks/filter/filter.model';
-import { getTasks, getTasksByStatus } from './tasks.model';
+import { shouldShowEmptyState } from '@blocks/todo/__empty-state/todo__empty-state.model';
+import { hideEmptyState, showEmptyState } from '@blocks/todo/__empty-state/todo__empty-state.view';
+import { getFilter } from '@blocks/todo/__filter/todo__filter.model';
+import { getTasks, getTasksByStatus } from './todo__task.model';
 
 const applyListeners = (elements, listeners) => {
 	listeners.forEach((listener, index) => listener(elements[index]));
@@ -38,48 +40,6 @@ export const showTasks = () => {
 	tasksList.classList.remove('hidden');
 };
 
-const emptyState = document.querySelector('.empty-state');
-
-const formEmptyState = () => {
-	const noTasksImage = document.querySelector('.empty-state__image');
-	const noTasksText = document.querySelector('.empty-state__text');
-
-	switch (getFilter()) {
-		case 'All': {
-			noTasksImage.classList.remove('hidden');
-			noTasksText.innerText = 'Как-то пустовато... Добавим новую задачу?';
-
-			break;
-		}
-
-		case 'Active': {
-			noTasksImage.classList.add('hidden');
-			noTasksText.innerText = 'Активных задач пока нет';
-
-			break;
-		}
-
-		case 'Completed': {
-			noTasksImage.classList.add('hidden');
-			noTasksText.innerText = 'Вы еще не закончили ни одну задачу';
-
-			break;
-		}
-
-		default:
-			break;
-	}
-};
-
-export const hideEmptyState = () => {
-	emptyState.classList.add('hidden');
-};
-
-export const showEmptyState = () => {
-	emptyState.classList.remove('hidden');
-	formEmptyState();
-};
-
 export const removeTaskFromDOM = (id) => {
 	tasksList.childNodes.forEach((task) => {
 		if (task.dataset.id === id) {
@@ -90,7 +50,7 @@ export const removeTaskFromDOM = (id) => {
 };
 
 export const appendTaskToDOM = (task, listeners) => {
-	// вынести отсюда
+	// следует вынести отсюда
 	if (tasksList.classList.contains('hidden')) {
 		showTasks();
 		hideEmptyState();
@@ -107,12 +67,6 @@ export const markTaskAsActive = (task) => {
 	task.classList.remove('todo__item_completed');
 	task.getElementsByClassName('checkbox__input')[0].checked = false;
 };
-
-export const isNoTasks = () => getTasks().length === 0 && getFilter() === 'All';
-export const isNoActiveTasks = () => getTasksByStatus('Active').length === 0 && getFilter() === 'Active';
-export const isNoCompletedTasks = () => getTasksByStatus('Completed').length === 0 && getFilter() === 'Completed';
-
-export const shouldShowEmptyState = () => isNoTasks() || isNoActiveTasks() || isNoCompletedTasks();
 
 export const renderTasks = (listeners) => {
 	const tasks = shouldFilter() ? getTasksByStatus(getFilter()) : getTasks();

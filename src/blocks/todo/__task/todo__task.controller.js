@@ -1,28 +1,23 @@
 import { updateFilterCounter } from '@blocks/filter/__counter/filter__counter.view';
+import { getFilter } from '@blocks/todo/__filter/todo__filter.model';
 import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 import { updateClearCompletedVisibility } from '@blocks/clear-completed/clear-completed.view';
-import { getFilter } from '@blocks/filter/filter.model';
-import { addTask, createTask, removeTaskById, setActive, setCompleted } from './tasks.model';
+import { showEmptyState } from '@blocks/todo/__empty-state/todo__empty-state.view';
+import { shouldShowEmptyState } from '@blocks/todo/__empty-state/todo__empty-state.model';
+import { clearInput } from '@blocks/todo/__input/todo__input';
+import { addTask, createTask, removeTaskById, setActive, setCompleted } from './todo__task.model';
 import {
 	appendTaskToDOM,
 	hideTasks,
-	shouldShowEmptyState,
 	markTaskAsActive,
 	markTaskAsCompleted,
 	removeTaskFromDOM,
 	renderTasks,
-	showEmptyState,
-} from './tasks.view';
+} from './todo__task.view';
 
 const input = document.querySelector('.input');
 
-input.focus();
-
-const clearInput = () => {
-	input.value = '';
-};
-
-const removeTaskListener = (element) => {
+export const removeTaskListener = (element) => {
 	element.addEventListener('click', ({ target }) => {
 		const { id } = target.parentNode.parentNode.dataset;
 		removeTaskById(id);
@@ -35,14 +30,8 @@ const removeTaskListener = (element) => {
 			hideTasks();
 			showEmptyState();
 		}
-		input.focus();
-	});
-};
 
-const initRemoveTask = () => {
-	const removeBtns = document.querySelectorAll('.todo-task__remove-btn');
-	removeBtns.forEach((btn) => {
-		removeTaskListener(btn);
+		input.focus();
 	});
 };
 
@@ -75,8 +64,8 @@ export const pressTaskListener = (task) => {
 };
 
 export const initPressTask = () => {
-	const tasksList = document.querySelectorAll('.todo-task');
-	tasksList.forEach((task) => pressTaskListener(task));
+	const tasks = document.querySelectorAll('.todo-task');
+	tasks.forEach((task) => pressTaskListener(task));
 };
 
 export const taskListeners = [removeTaskListener, pressTaskListener];
@@ -114,27 +103,6 @@ const initAddTaskOnFocusOut = () => {
 	});
 };
 
-renderTasks();
-initAddTaskOnEnter();
-initAddTaskOnFocusOut();
-initRemoveTask();
-initPressTask();
-
-const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
-clearInputIcon.addEventListener('mousedown', () => {
-	input.value = '';
-});
-
-initAddTaskOnFocusOut();
-
-input.addEventListener('focus', () => {
-	clearInputIcon.classList.add('todo__input-wrapper_icon_shown');
-});
-
-input.addEventListener('blur', () => {
-	clearInputIcon.classList.remove('todo__input-wrapper_icon_shown');
-});
-
 input.addEventListener('keydown', (e) => {
 	console.log(e.key);
 	if (e.key === 'Escape' || e.key === 'Tab') {
@@ -146,3 +114,8 @@ input.addEventListener('keydown', (e) => {
 document.addEventListener('keypress', () => {
 	input.focus();
 });
+
+renderTasks();
+initAddTaskOnEnter();
+initAddTaskOnFocusOut();
+initPressTask();
