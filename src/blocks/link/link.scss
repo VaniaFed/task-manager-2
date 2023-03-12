@@ -4,6 +4,7 @@
 
 @mixin link {
 	@include paragraph;
+
 	text-decoration: none;
 	color: $color-black;
 

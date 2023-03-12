@@ -4,6 +4,7 @@
 
 @mixin button {
 	@include paragraph;
+
 	padding: 15px 72.5px;
 	background: $color-green-400;
 	color: $color-white;

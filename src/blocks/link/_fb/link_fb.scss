@@ -5,12 +5,12 @@
 	position: relative;
 
 	&::before {
-		content: url(icons/fb.svg);
+		content: url('icons/fb.svg');
 		position: absolute;
 		left: -36px;
 
 		@include media-mobile {
-			content: url(icons/fb_mob.svg);
+			content: url('icons/fb_mob.svg');
 			left: -25px;
 		}
 	}

@@ -12,5 +12,5 @@
 		},
 		"allowSyntheticDefaultImports": true
 	},
-	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc"]
+	"exclude": ["node_modules", "**/node_modules/*", ".stylelintrc.ts"]
 }
