@@ -1,14 +1,10 @@
-const getFilterFromLocalStorage = () => JSON.parse(localStorage.getItem('filter')) || 'All';
+import { getFilterFromStorage, setFilterToStorage } from '@services/filter';
 
-const setFilterToLocalStorage = (newFilter) => {
-	localStorage.setItem('filter', JSON.stringify(newFilter));
-};
+let filter = getFilterFromStorage();
 
-let filter = getFilterFromLocalStorage();
-
-export const getFilter = () => (!filter ? getFilterFromLocalStorage() : filter);
+export const getFilter = () => (!filter ? getFilterFromStorage() : filter);
 
 export const setFilter = (newFilter) => {
 	filter = newFilter;
-	setFilterToLocalStorage(newFilter);
+	setFilterToStorage(newFilter);
 };

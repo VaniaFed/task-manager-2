@@ -7,6 +7,7 @@
 		"paths": {
 			"@scss/*": ["./scr/scss/*"],
 			"@blocks/*": ["./src/blocks/*"],
+			"@services/*": ["./src/services/*"],
 			"@utilities/*": ["./src/utilities/*"]
 		},
 		"allowSyntheticDefaultImports": true

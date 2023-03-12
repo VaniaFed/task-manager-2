@@ -1,20 +1,15 @@
 import { generateId } from '@utilities/utilities';
+import { getTasksFromStorage, setTasksToStorage } from '@services/tasks';
 
-const getTasksFromLocalStorage = () => JSON.parse(localStorage.getItem('tasks'));
+let tasks = getTasksFromStorage() || [];
 
-const setTasksToLocalStorage = (newTasks) => {
-	localStorage.setItem('tasks', JSON.stringify(newTasks));
-};
-
-let tasks = getTasksFromLocalStorage() || [];
-
-export const getTasks = () => (!tasks ? getTasksFromLocalStorage() : tasks);
+export const getTasks = () => (!tasks ? getTasksFromStorage() : tasks);
 
 export const getTasksByStatus = (status) => getTasks().filter((task) => task.status === status) || [];
 
 export const updateTasks = (newTasks = []) => {
 	tasks = newTasks;
-	setTasksToLocalStorage(newTasks);
+	setTasksToStorage(newTasks);
 };
 
 export const createTask = (value) => ({

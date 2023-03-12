@@ -39,6 +39,7 @@ module.exports = {
 				map: [
 					['@scss', './src/scss'],
 					['@blocks', './src/blocks'],
+					['@services', './src/services'],
 					['@utilities', './src/utilities'],
 				],
 				extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss'],
