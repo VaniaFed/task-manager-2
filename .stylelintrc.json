@@ -9,7 +9,7 @@
 		"no-invalid-double-slash-comments": null,
 		"font-family-no-missing-generic-family-keyword": null,
 		"selector-class-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(_([a-z0-9]+-?)+){0,2}$|^Mui.*$",
-		"property-no-vendor-prefix": null,
-		"scss/at-mixin-pattern": null
+		"scss/at-mixin-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(_([a-z0-9]+-?)+){0,2}$|^Mui.*$",
+		"property-no-vendor-prefix": null
 	}
 }
