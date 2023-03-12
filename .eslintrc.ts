@@ -3,9 +3,9 @@ module.exports = {
 		browser: true,
 		es2022: true,
 	},
-	extends: ['eslint:recommended', 'airbnb', 'prettier', 'plugin:prettier/recommended'],
+	extends: ['eslint:recommended', 'airbnb', 'standard-with-typescript', 'prettier', 'plugin:prettier/recommended'],
 	plugins: ['prettier'],
-	parser: '@babel/eslint-parser',
+	parser: 'babel-eslint',
 	parserOptions: {
 		requireConfigFile: false,
 		babelOptions: {
@@ -37,7 +37,6 @@ module.exports = {
 		'import/resolver': {
 			alias: {
 				map: [
-					['@js', './src/js'],
 					['@scss', './src/scss'],
 					['@blocks', './src/blocks'],
 					['@utilities', './src/utilities'],

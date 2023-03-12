@@ -1,4 +1,4 @@
-module.exports = {
+const devServerConfig = {
 	devServer: {
 		port: 3000,
 		open: true,
@@ -6,3 +6,5 @@ module.exports = {
 		watchFiles: ['../src/*.scss'],
 	},
 };
+
+export default devServerConfig;

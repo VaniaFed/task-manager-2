@@ -6,7 +6,7 @@ const webpack = require('webpack');
 
 const path = require('path');
 
-module.exports = {
+const prodConfig = {
 	target: 'browserslist',
 	module: {
 		rules: [
@@ -92,3 +92,5 @@ module.exports = {
 		nodeEnv: 'production',
 	},
 };
+
+export default prodConfig;

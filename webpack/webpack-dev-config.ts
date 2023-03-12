@@ -1,9 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { SourceMapDevToolPlugin } from 'webpack';
 
-const path = require('path');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const devConfig = {
 	target: 'web',
 	devtool: false,
 	module: {
@@ -31,11 +34,13 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new webpack.SourceMapDevToolPlugin({}),
+		new SourceMapDevToolPlugin({}),
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, '../', 'src/', 'index.html'),
+			template: resolve(__dirname, '../', 'src/', 'index.html'),
 			filename: 'index.html',
 		}),
 	],
 	mode: 'development',
 };
+
+export default devConfig;

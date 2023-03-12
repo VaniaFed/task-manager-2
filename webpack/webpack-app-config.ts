@@ -1,12 +1,12 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ESLintPlugin = require('eslint-webpack-plugin');
-const StylelintPlugin = require('stylelint-webpack-plugin');
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import ESLintPlugin from 'eslint-webpack-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
 
-const path = require('path');
+import { resolve } from 'path';
 
-module.exports = {
+const appConfig = {
 	output: {
-		path: path.resolve(__dirname, '../dist'),
+		path: resolve(__dirname, '../dist'),
 		clean: true,
 		filename: 'index.js',
 		assetModuleFilename: 'assets/[name][ext]',
@@ -20,3 +20,5 @@ module.exports = {
 		new StylelintPlugin(),
 	],
 };
+
+export default appConfig;

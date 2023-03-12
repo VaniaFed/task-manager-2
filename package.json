@@ -2,15 +2,30 @@
 	"name": "your-tour",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"type": "module",
 	"scripts": {
-		"start": "webpack-dev-server --config webpack.dev.config.js",
-		"build": "webpack --config webpack.prod.config.js",
+		"start": "webpack-dev-server --config webpack.dev.config.ts",
 		"clear": "rd /s /q dist",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"stylelint": "stylelint ./src",
 		"stylelint:fix": "stylelint ./src --fix"
+	},
+	"babel": {
+		"presets": [
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"node": "current"
+					}
+				}
+			]
+		],
+		"plugins": [
+			"babel-plugin-transform-import-meta",
+			"transform-es2015-modules-commonjs"
+		]
 	},
 	"repository": {
 		"type": "git",
@@ -39,15 +54,22 @@
 		"@babel/core": "^7.21.0",
 		"@babel/eslint-parser": "^7.19.1",
 		"@babel/preset-env": "^7.20.2",
+		"@babel/preset-typescript": "^7.21.0",
+		"@babel/register": "^7.21.0",
 		"@typescript-eslint/eslint-plugin": "^5.44.0",
 		"@typescript-eslint/parser": "^5.44.0",
+		"babel-eslint": "^10.1.0",
 		"babel-loader": "^9.1.2",
+		"babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+		"babel-plugin-transform-import-meta": "^2.2.0",
 		"browserslist": "^4.21.4",
+		"cross-env": "^7.0.3",
 		"css-loader": "^6.7.3",
 		"css-minimizer-webpack-plugin": "^4.2.2",
 		"eslint": "^8.35.0",
 		"eslint-config-airbnb": "^19.0.4",
 		"eslint-config-prettier": "^8.6.0",
+		"eslint-config-standard-with-typescript": "^34.0.0",
 		"eslint-config-xo": "^0.43.1",
 		"eslint-config-xo-typescript": "^0.55.0",
 		"eslint-import-resolver-alias": "^1.1.2",
@@ -73,7 +95,9 @@
 		"stylelint-webpack-plugin": "^4.1.0",
 		"svg-url-loader": "^8.0.0",
 		"terser-webpack-plugin": "^5.3.6",
+		"ts-loader": "^9.4.2",
 		"typescript": "^4.9.3",
+		"url": "^0.11.0",
 		"webpack": "^5.75.0",
 		"webpack-cli": "^5.0.1",
 		"webpack-dev-server": "^4.11.1",
