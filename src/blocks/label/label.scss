@@ -1,8 +1,0 @@
-@import '@blocks/paragraph/paragraph';
-
-.label {
-	@include paragraph;
-
-	display: block;
-	font-weight: 600;
-}

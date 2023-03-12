@@ -1,9 +1,0 @@
-@import '@blocks/paragraph/paragraph';
-
-.login {
-	@include paragraph_size_sm;
-
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
