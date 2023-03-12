@@ -32,7 +32,7 @@ const shouldFilter = () => getFilter() !== 'All';
 const tasksList = document.getElementsByClassName('todo__list')[0];
 
 export const removeTaskFromDOM = (id) => {
-	tasksList.childNodes.forEach((task) => {
+	tasksList.childNodes.forEach((task: HTMLElement) => {
 		if (task.dataset.id === id) {
 			task.remove();
 			return 0;
@@ -54,7 +54,7 @@ export const markTaskAsActive = (task) => {
 	task.getElementsByClassName('checkbox__input')[0].checked = false;
 };
 
-export const renderTasks = (listeners) => {
+export const renderTasks = (listeners?: ((element: any) => void)[]) => {
 	const tasks = shouldFilter() ? getTasksByStatus(getFilter()) : getTasks();
 
 	tasksList.innerHTML = '';
@@ -70,7 +70,7 @@ export const renderTasks = (listeners) => {
 };
 
 export const removeCompletedTasksFromDOM = () => {
-	[...tasksList.childNodes].forEach((task) => {
+	[...tasksList.childNodes].forEach((task: HTMLElement) => {
 		if (task.classList.contains('todo-task_completed')) {
 			task.remove();
 		}

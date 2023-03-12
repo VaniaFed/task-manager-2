@@ -4,7 +4,7 @@ import { getFilter } from '@blocks/todo/__filter/todo__filter.model';
 const todoTitleCounter = document.querySelector('.todo-title__counter');
 
 const _updateTodoTitleCounter = (value) => {
-	todoTitleCounter.innerText = `(${value})`;
+	todoTitleCounter.textContent = `(${value})`;
 };
 
 export const updateTodoTitleCounter = () => {

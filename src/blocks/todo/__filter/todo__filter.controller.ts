@@ -12,7 +12,7 @@ const shouldFilter = (filter) => !filter.classList.contains('filter__item_active
 const initClickFilter = () => {
 	filterControll.forEach((currentFilter) => {
 		currentFilter.addEventListener('click', (e) => {
-			const filter = e.target;
+			const filter = e.target as HTMLElement;
 			if (shouldFilter(filter)) {
 				removeAllActiveClasses(filterControll);
 				makeFilterActive(filter);
@@ -29,7 +29,8 @@ const initClickFilter = () => {
 	});
 };
 
-const getActiveFilter = () => [...filterControll].filter((filter) => filter.dataset.filter === getFilter())[0];
+const getActiveFilter = () =>
+	[...filterControll].filter((filter: HTMLElement) => filter.dataset.filter === getFilter())[0];
 
 makeFilterActive(getActiveFilter());
 

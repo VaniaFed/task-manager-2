@@ -5,6 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "webpack-dev-server --config webpack.dev.config.ts",
+		"build": "webpack --config webpack.prod.config.ts",
 		"clear": "rd /s /q dist",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",

@@ -9,21 +9,21 @@ const formEmptyState = () => {
 	switch (getFilter()) {
 		case 'All': {
 			noTasksImage.classList.remove('hidden');
-			noTasksText.innerText = 'Как-то пустовато... Добавим новую задачу?';
+			noTasksText.textContent = 'Как-то пустовато... Добавим новую задачу?';
 
 			break;
 		}
 
 		case 'Active': {
 			noTasksImage.classList.add('hidden');
-			noTasksText.innerText = 'Активных задач пока нет';
+			noTasksText.textContent = 'Активных задач пока нет';
 
 			break;
 		}
 
 		case 'Completed': {
 			noTasksImage.classList.add('hidden');
-			noTasksText.innerText = 'Вы еще не закончили ни одну задачу';
+			noTasksText.textContent = 'Вы еще не закончили ни одну задачу';
 
 			break;
 		}

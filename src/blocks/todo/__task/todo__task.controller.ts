@@ -8,7 +8,7 @@ import { clearInput } from '@blocks/todo/__input/todo__input';
 import { addTask, createTask, removeTaskById, setActive, setCompleted } from './todo__task.model';
 import { appendTaskToDOM, markTaskAsActive, markTaskAsCompleted, removeTaskFromDOM } from './todo__task.view';
 
-const input = document.querySelector('.input');
+const input = document.querySelector('.input') as HTMLInputElement;
 
 export const removeTaskListener = (element) => {
 	element.addEventListener('click', ({ target }) => {

@@ -1,7 +1,7 @@
 import { hideClearInputIcon, showClearInputIcon } from '../__input-wrapper/__icon/todo__input-wrapper__icon.view';
 import { handleAddTask } from '../__task/todo__task.controller';
 
-const input = document.querySelector('.input');
+const input = document.querySelector('.input') as HTMLInputElement;
 
 export const clearInput = () => {
 	input.value = '';
