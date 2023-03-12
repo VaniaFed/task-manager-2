@@ -1,3 +1,14 @@
-export const getFilter = () => JSON.parse(localStorage.getItem('filter')) || 'All';
+const getFilterFromLocalStorage = () => JSON.parse(localStorage.getItem('filter')) || 'All';
 
-export const setFilter = (value) => localStorage.setItem('filter', JSON.stringify(value));
+const setFilterToLocalStorage = (newFilter) => {
+	localStorage.setItem('filter', JSON.stringify(newFilter));
+};
+
+let filter = getFilterFromLocalStorage();
+
+export const getFilter = () => (!filter ? getFilterFromLocalStorage() : filter);
+
+export const setFilter = (newFilter) => {
+	filter = newFilter;
+	setFilterToLocalStorage(newFilter);
+};

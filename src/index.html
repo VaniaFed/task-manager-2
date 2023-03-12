@@ -35,19 +35,27 @@
 				</ul>
 				<span class="login">
 					<a class="login__item link" href="#">Войти</a>
-					/<a class="login__item link" href="#">Зарегестрироваться</a>
+					/<a class="login__item link" href="#">Зарегистрироваться</a>
 				</span>
 			</nav>
 		</header>
 		<main class="main container">
 			<div class="todo main__todo">
-				<div class="todo__input-wrapper">
-					<input class="todo__input input" type="text" placeholder="What needs to be done?" />
-					<img
-						class="todo__input-wrapper__icon todo__input-wrapper_icon_shown"
-						src="icons/cross-clear.svg"
-						alt="Clear"
-					/>
+				<div class="input-field">
+					<label class="label" for="todo-input">Введите задачу</label>
+					<div class="todo__input-wrapper">
+						<input
+							class="todo__input input"
+							id="todo-input"
+							type="text"
+							placeholder="Купить капучино на овсяном молоке"
+						/>
+						<img
+							class="todo__input-wrapper__icon todo__input-wrapper_icon_shown"
+							src="icons/cross-clear.svg"
+							alt="Clear"
+						/>
+					</div>
 				</div>
 				<div class="todo-content">
 					<h2 class="todo-title">Все задачи <span class="todo-title__counter counter">(0)</span></h2>
@@ -60,23 +68,23 @@
 					</div>
 				</div>
 				<div class="todo-footer">
-					<ul class="todo-footer__filter filter">
+					<ul class="todo__filter filter">
 						<li class="filter__item" data-filter="All">
 							<button class="filter__content">
 								Все
-								<span class="filter__counter counter" data="all-filter-counter">(0)</span>
+								<span class="filter__counter counter" data-filter-counter="All">(0)</span>
 							</button>
 						</li>
 						<li class="filter__item" data-filter="Active">
 							<button class="filter__content">
 								Активные
-								<span class="filter__counter counter" data="active-filter-counter">(0)</span>
+								<span class="filter__counter counter" data-filter-counter="Active">(0)</span>
 							</button>
 						</li>
 						<li class="filter__item" data-filter="Completed">
 							<button class="filter__content">
 								Завершенные
-								<span class="filter__counter counter" data="completed-filter-counter">(0)</span>
+								<span class="filter__counter counter" data-filter-counter="Completed">(0)</span>
 							</button>
 						</li>
 					</ul>

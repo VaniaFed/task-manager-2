@@ -19,6 +19,8 @@
 @import '@blocks/input/input';
 @import '@blocks/checkbox/__input/checkbox__input';
 
+@import '@blocks/label/label';
+
 @import '@blocks/clear-completed/clear-completed';
 
 @import '@blocks/container/container';
@@ -73,6 +75,8 @@
 @import '@blocks/todo-task/__remove-btn/todo-task__remove-btn';
 @import '@blocks/todo-task/__checkbox/todo-task__checkbox';
 
+@import '@blocks/todo/__filter/todo__filter';
+
 @import '@blocks/header/header';
 @import '@blocks/header/__nav/header__nav';
 @import '@blocks/header/__logo/header__logo';
@@ -86,4 +90,3 @@
 @import '@blocks/footer/__link/footer__link';
 
 @import '@blocks/todo-footer/todo-footer';
-@import '@blocks/todo-footer/__filter/todo-footer__filter';

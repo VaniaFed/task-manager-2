@@ -7,7 +7,7 @@ import { updateTodoTitle } from '@blocks/todo-title/todo-title.view';
 import { updateTodoTitleCounter } from '@blocks/todo-title/__counter/todo-title__counter.view';
 import { updateFilterCounter } from '@blocks/filter/__counter/filter__counter.view';
 import { updateClearCompletedVisibility } from '@blocks/clear-completed/clear-completed.view';
-import { pressClearComplitedListener } from '@blocks/clear-completed/clear-completed.controller';
+import { pressClearCompletedListener } from '@blocks/clear-completed/clear-completed.controller';
 import { initRemoveTask } from '@blocks/todo-task/__remove-btn/todo-task__remove-btn.controller';
 import { renderTasks } from './__task/todo__task.view';
 
@@ -20,7 +20,7 @@ const onInit = () => {
 	updateTodoTitleCounter();
 	updateFilterCounter();
 	updateClearCompletedVisibility();
-	pressClearComplitedListener();
+	pressClearCompletedListener();
 };
 
 onInit();

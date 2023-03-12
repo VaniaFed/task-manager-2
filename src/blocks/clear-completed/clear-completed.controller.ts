@@ -8,7 +8,7 @@ import { updateClearCompletedVisibility } from './clear-completed.view';
 
 const clearCompleted = document.querySelector('.clear-completed');
 
-export const pressClearComplitedListener = () => {
+export const pressClearCompletedListener = () => {
 	clearCompleted.addEventListener('click', () => {
 		removeTasksByStatus('Completed');
 		removeCompletedTasksFromDOM();

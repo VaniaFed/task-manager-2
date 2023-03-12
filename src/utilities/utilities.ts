@@ -1,1 +1,3 @@
-export const generateId = () => Math.floor(Math.random() * 1000);
+import { v4 } from 'uuid';
+
+export const generateId = () => v4();

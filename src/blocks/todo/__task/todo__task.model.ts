@@ -1,11 +1,20 @@
 import { generateId } from '@utilities/utilities';
 
-export const getTasks = () => JSON.parse(localStorage.getItem('tasks'));
+const getTasksFromLocalStorage = () => JSON.parse(localStorage.getItem('tasks'));
+
+const setTasksToLocalStorage = (newTasks) => {
+	localStorage.setItem('tasks', JSON.stringify(newTasks));
+};
+
+let tasks = getTasksFromLocalStorage() || [];
+
+export const getTasks = () => (!tasks ? getTasksFromLocalStorage() : tasks);
 
 export const getTasksByStatus = (status) => getTasks().filter((task) => task.status === status) || [];
 
-export const updateTasks = (newTaskState = {}) => {
-	localStorage.setItem('tasks', JSON.stringify(newTaskState));
+export const updateTasks = (newTasks = []) => {
+	tasks = newTasks;
+	setTasksToLocalStorage(newTasks);
 };
 
 export const createTask = (value) => ({
@@ -22,7 +31,7 @@ export const addTask = (task) => {
 export const removeTaskById = (id) => {
 	const tasks = getTasks();
 
-	const filtered = tasks.filter((task) => Number(task.id) !== Number(id));
+	const filtered = tasks.filter((task) => task.id !== id);
 
 	updateTasks(filtered);
 };
@@ -39,7 +48,7 @@ const changeStatus = (task, status) => ({ ...task, status });
 export const setStatusById = (id, status) => {
 	const tasks = getTasks();
 
-	const mapped = tasks.map((task) => (Number(task.id) === Number(id) ? changeStatus(task, status) : task));
+	const mapped = tasks.map((task) => (task.id === id ? changeStatus(task, status) : task));
 
 	updateTasks(mapped);
 };
