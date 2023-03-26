@@ -1,26 +1,30 @@
-import 'blocks/todo/__filter/todo__filter.controller';
-import 'blocks/todo/__input-wrapper/__icon/todo__input-wrapper__icon.controller';
+import { initPressTask, renderTasks } from 'blocks/todo/__task';
+import { initAddTaskOnFocusOut, initAddTaskOnEnter } from 'blocks/todo/__input';
+import { initRemoveTask } from 'blocks/todo-task/__remove-btn';
+import { clearInputListener } from 'blocks/todo/__input-wrapper/__icon';
 
-import { initPressTask } from 'blocks/todo/__task/todo__task.controller';
-import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
-import { updateTodoTitle } from 'blocks/todo-title/todo-title.view';
-import { updateTodoTitleCounter } from 'blocks/todo-title/__counter/todo-title__counter.view';
-import { updateFilterCounter } from 'blocks/filter/__counter/filter__counter.view';
-import { updateClearCompletedVisibility } from 'blocks/clear-completed/clear-completed.view';
-import { pressClearCompletedListener } from 'blocks/clear-completed/clear-completed.controller';
-import { initRemoveTask } from 'blocks/todo-task/__remove-btn/todo-task__remove-btn.controller';
-import { renderTasks } from './__task/todo__task.view';
+import { getFilter, initClickFilter, makeFilterActiveAccordingToStore } from 'blocks/todo/__filter';
+import { updateFilterCounter } from 'blocks/filter/__counter';
+import { updateTodoTitle } from 'blocks/todo-title';
+import { updateTodoTitleCounter } from 'blocks/todo-title/__counter';
+import { updateClearCompletedVisibility, pressClearCompletedListener } from 'blocks/clear-completed';
 
 const onInit = () => {
 	renderTasks();
 	initPressTask();
 	initRemoveTask();
+	initAddTaskOnEnter();
+	initAddTaskOnFocusOut();
+
+	initClickFilter();
+	makeFilterActiveAccordingToStore();
+	updateFilterCounter();
 
 	updateTodoTitle(getFilter());
 	updateTodoTitleCounter();
-	updateFilterCounter();
 	updateClearCompletedVisibility();
 	pressClearCompletedListener();
+	clearInputListener();
 };
 
 onInit();

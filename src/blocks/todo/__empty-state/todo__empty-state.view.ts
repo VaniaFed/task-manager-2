@@ -1,4 +1,4 @@
-import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
+import { getFilter } from 'blocks/todo/__filter';
 
 const emptyState = document.querySelector('.empty-state');
 

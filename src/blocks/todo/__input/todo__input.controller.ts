@@ -1,5 +1,5 @@
-import { hideClearInputIcon, showClearInputIcon } from '../__input-wrapper/__icon/todo__input-wrapper__icon.view';
-import { handleAddTask } from '../__task/todo__task.controller';
+import { handleAddTask } from 'blocks/todo/__task';
+import { hideClearInputIcon, showClearInputIcon } from 'blocks/todo/__input-wrapper/__icon';
 
 const input = document.querySelector('.input') as HTMLInputElement;
 
@@ -23,7 +23,7 @@ export const initAddTaskOnEnter = () => {
 	});
 };
 
-const initAddTaskOnFocusOut = () => {
+export const initAddTaskOnFocusOut = () => {
 	input.addEventListener('blur', (e) => {
 		handleAddTask(e);
 	});
@@ -41,6 +41,3 @@ document.addEventListener('keypress', () => {
 });
 
 input.focus();
-
-initAddTaskOnEnter();
-initAddTaskOnFocusOut();

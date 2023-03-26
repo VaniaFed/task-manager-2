@@ -1,12 +1,20 @@
-import { updateFilterCounter } from 'blocks/filter/__counter/filter__counter.view';
-import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
-import { updateTodoTitleCounter } from 'blocks/todo-title/__counter/todo-title__counter.view';
-import { updateClearCompletedVisibility } from 'blocks/clear-completed/clear-completed.view';
-import { hideEmptyState, showEmptyState } from 'blocks/todo/__empty-state/todo__empty-state.view';
-import { shouldShowEmptyState } from 'blocks/todo/__empty-state/todo__empty-state.model';
-import { clearInput } from 'blocks/todo/__input/todo__input';
-import { addTask, createTask, removeTaskById, setActive, setCompleted } from './todo__task.model';
-import { appendTaskToDOM, markTaskAsActive, markTaskAsCompleted, removeTaskFromDOM } from './todo__task.view';
+import {
+	addTask,
+	createTask,
+	removeTaskById,
+	setActive,
+	setCompleted,
+	appendTaskToDOM,
+	markTaskAsActive,
+	markTaskAsCompleted,
+	removeTaskFromDOM,
+} from 'blocks/todo/__task';
+import { getFilter } from 'blocks/todo/__filter';
+import { updateFilterCounter } from 'blocks/filter/__counter';
+import { updateTodoTitleCounter } from 'blocks/todo-title/__counter';
+import { updateClearCompletedVisibility } from 'blocks/clear-completed';
+import { clearInput } from 'blocks/todo/__input';
+import { shouldShowEmptyState, hideEmptyState, showEmptyState } from 'blocks/todo/__empty-state';
 
 const input = document.querySelector('.input') as HTMLInputElement;
 

@@ -1,8 +1,7 @@
-import { ITask } from 'types/task';
-import { shouldShowEmptyState } from 'blocks/todo/__empty-state/todo__empty-state.model';
-import { hideEmptyState, showEmptyState } from 'blocks/todo/__empty-state/todo__empty-state.view';
-import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
 import { getTasks, getTasksByStatus } from './todo__task.model';
+import { ITask } from 'types/task';
+import { getFilter } from 'blocks/todo/__filter';
+import { shouldShowEmptyState, hideEmptyState, showEmptyState } from 'blocks/todo/__empty-state';
 
 type TypeListener = (element: HTMLElement) => void;
 

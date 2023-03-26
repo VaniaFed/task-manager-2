@@ -1,6 +1,6 @@
+import { getTasksFromStorage, setTasksToStorage } from 'helpers/tasks';
 import { ITask } from 'types/task';
 import { generateId } from 'utils/utilities';
-import { getTasksFromStorage, setTasksToStorage } from 'helpers/tasks';
 
 let tasks: ITask[] = getTasksFromStorage() || [];
 
