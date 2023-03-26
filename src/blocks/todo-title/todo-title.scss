@@ -1,5 +1,5 @@
-@import '@blocks/title/title';
-@import '@blocks/title/_size/title_size_3';
+@import 'blocks/title/title';
+@import 'blocks/title/_size/title_size_3';
 
 .todo-title {
 	@include title;

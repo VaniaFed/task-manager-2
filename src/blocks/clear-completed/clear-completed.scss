@@ -1,5 +1,5 @@
-@import '@blocks/button/button';
-@import '@blocks/button/_small/button_small';
+@import 'blocks/button/button';
+@import 'blocks/button/_small/button_small';
 
 .clear-completed {
 	@include button;

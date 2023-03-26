@@ -1,7 +1,7 @@
-@import '@blocks/link/link';
-@import '@utilities/variables';
-@import '@utilities/media';
-@import '@blocks/link/_active/link_active_blue';
+@import 'blocks/link/link';
+@import 'utils/variables';
+@import 'utils/media';
+@import 'blocks/link/_active/link_active_blue';
 
 .footer__link {
 	@include link;

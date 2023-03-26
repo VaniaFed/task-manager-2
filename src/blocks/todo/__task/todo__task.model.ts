@@ -1,29 +1,31 @@
-import { generateId } from '@utilities/utilities';
-import { getTasksFromStorage, setTasksToStorage } from '@services/tasks';
+import { ITask } from 'types/task';
+import { generateId } from 'utils/utilities';
+import { getTasksFromStorage, setTasksToStorage } from 'helpers/tasks';
 
-let tasks = getTasksFromStorage() || [];
+let tasks: ITask[] = getTasksFromStorage() || [];
 
-export const getTasks = () => (!tasks ? getTasksFromStorage() : tasks);
+export const getTasks = (): ITask[] => (!tasks ? getTasksFromStorage() : tasks);
 
-export const getTasksByStatus = (status) => getTasks().filter((task) => task.status === status) || [];
+export const getTasksByStatus = (status: ITask['status']): ITask[] =>
+	getTasks().filter((task) => task.status === status) || [];
 
-export const updateTasks = (newTasks = []) => {
+export const updateTasks = (newTasks = [] as ITask[]) => {
 	tasks = newTasks;
 	setTasksToStorage(newTasks);
 };
 
-export const createTask = (value) => ({
+export const createTask = (text: ITask['text']): ITask => ({
 	id: generateId(),
 	status: 'Active',
-	value,
+	text,
 });
 
-export const addTask = (task) => {
+export const addTask = (task: ITask) => {
 	const tasks = getTasks() || [];
 	updateTasks([...tasks, task]);
 };
 
-export const removeTaskById = (id) => {
+export const removeTaskById = (id: ITask['id']) => {
 	const tasks = getTasks();
 
 	const filtered = tasks.filter((task) => task.id !== id);
@@ -31,16 +33,16 @@ export const removeTaskById = (id) => {
 	updateTasks(filtered);
 };
 
-export const removeTasksByStatus = (status) => {
+export const removeTasksByStatus = (status: ITask['status']) => {
 	const tasks = getTasks();
 
 	const filtered = tasks.filter((task) => task.status !== status);
 	updateTasks(filtered);
 };
 
-const changeStatus = (task, status) => ({ ...task, status });
+const changeStatus = (task: ITask, status: ITask['status']) => ({ ...task, status });
 
-export const setStatusById = (id, status) => {
+export const setStatusById = (id: ITask['id'], status: ITask['status']) => {
 	const tasks = getTasks();
 
 	const mapped = tasks.map((task) => (task.id === id ? changeStatus(task, status) : task));
@@ -48,10 +50,10 @@ export const setStatusById = (id, status) => {
 	updateTasks(mapped);
 };
 
-export const setActive = (id) => {
+export const setActive = (id: ITask['id']) => {
 	setStatusById(id, 'Active');
 };
 
-export const setCompleted = (id) => {
+export const setCompleted = (id: ITask['id']) => {
 	setStatusById(id, 'Completed');
 };

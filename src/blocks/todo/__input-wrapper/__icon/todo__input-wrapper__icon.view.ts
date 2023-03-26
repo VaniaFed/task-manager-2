@@ -1,4 +1,4 @@
-const clearInputIcon = document.querySelector('.todo__input-wrapper__icon');
+const clearInputIcon = document.querySelector('.todo__input-wrapper__icon')!;
 
 export const showClearInputIcon = () => {
 	clearInputIcon.classList.add('todo__input-wrapper_icon_shown');

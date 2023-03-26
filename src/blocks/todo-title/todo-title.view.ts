@@ -1,6 +1,8 @@
-const todoTitle = document.querySelector('.todo-title').childNodes[0];
+import { TypeFilter } from 'types/filter';
 
-export const updateTodoTitle = (filter) => {
+const todoTitle = document.querySelector('.todo-title')!.childNodes[0];
+
+export const updateTodoTitle = (filter: TypeFilter) => {
 	switch (filter) {
 		case 'All':
 			todoTitle.textContent = 'Все задачи';

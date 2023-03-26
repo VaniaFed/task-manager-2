@@ -1,4 +1,4 @@
-import { getFilter } from '@blocks/todo/__filter/todo__filter.model';
+import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
 
 const emptyState = document.querySelector('.empty-state');
 
@@ -34,10 +34,10 @@ const formEmptyState = () => {
 };
 
 export const hideEmptyState = () => {
-	emptyState.classList.add('hidden');
+	emptyState!.classList.add('hidden');
 };
 
 export const showEmptyState = () => {
-	emptyState.classList.remove('hidden');
+	emptyState!.classList.remove('hidden');
 	formEmptyState();
 };

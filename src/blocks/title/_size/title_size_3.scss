@@ -1,5 +1,5 @@
-@import '@utilities/variables';
-@import '@utilities/media';
+@import 'utils/variables';
+@import 'utils/media';
 
 @mixin title_size_3 {
 	font-size: 35px;

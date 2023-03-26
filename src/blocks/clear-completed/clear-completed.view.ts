@@ -1,13 +1,13 @@
-import { getTasksByStatus } from '@blocks/todo/__task/todo__task.model';
+import { getTasksByStatus } from 'blocks/todo/__task/todo__task.model';
 
 const clearCompleted = document.querySelector('.clear-completed');
 
 const showClearCompleted = () => {
-	clearCompleted.classList.remove('hidden');
+	clearCompleted!.classList.remove('hidden');
 };
 
 const hideClearCompleted = () => {
-	clearCompleted.classList.add('hidden');
+	clearCompleted!.classList.add('hidden');
 };
 
 export const updateClearCompletedVisibility = () => {

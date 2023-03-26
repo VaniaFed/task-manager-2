@@ -1,9 +1,9 @@
-export const removeAllActiveClasses = (filters) => {
+export const removeAllActiveClasses = (filters: NodeList) => {
 	filters.forEach((filter) => {
-		filter.classList.remove('filter__item_active');
+		(filter as HTMLElement).classList.remove('filter__item_active');
 	});
 };
 
-export const makeFilterActive = (filter) => {
+export const makeFilterActive = (filter: HTMLElement) => {
 	filter.classList.add('filter__item_active');
 };

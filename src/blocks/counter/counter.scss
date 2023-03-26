@@ -1,6 +1,6 @@
-@import '@blocks/paragraph/paragraph';
-@import '@blocks/paragraph/_size/paragraph_size_sm';
-@import '@utilities/variables';
+@import 'blocks/paragraph/paragraph';
+@import 'blocks/paragraph/_size/paragraph_size_sm';
+@import 'utils/variables';
 
 .counter {
 	@include paragraph;

@@ -20,7 +20,7 @@ module.exports = {
 		'arrow-parens': 0,
 		'no-param-reassign': [2, { props: false }],
 		'no-use-before-define': 2,
-		'linebreak-style': ['error', 'unix'],
+		'linebreak-style': 0,
 		quotes: ['error', 'single'],
 		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'implicit-arrow-linebreak': 2,
@@ -37,10 +37,12 @@ module.exports = {
 		'import/resolver': {
 			alias: {
 				map: [
-					['@scss', './src/scss'],
-					['@blocks', './src/blocks'],
-					['@services', './src/services'],
-					['@utilities', './src/utilities'],
+					['scss', './src/scss'],
+					['blocks', './src/blocks'],
+					['services', './src/services'],
+					['utils', './src/utils'],
+					['helpers', './src/helpers'],
+					['types', './src/types'],
 				],
 				extensions: ['.ts', '.tsx', '.js', '.jsx', '.json', '.scss'],
 			},

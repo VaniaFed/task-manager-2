@@ -1,16 +1,17 @@
-import { getTasks, getTasksByStatus } from '@blocks/todo/__task/todo__task.model';
-import { getFilter } from '@blocks/todo/__filter/todo__filter.model';
+import { ITask } from 'types/task';
+import { getTasks, getTasksByStatus } from 'blocks/todo/__task/todo__task.model';
+import { getFilter } from 'blocks/todo/__filter/todo__filter.model';
 
 const todoTitleCounter = document.querySelector('.todo-title__counter');
 
-const _updateTodoTitleCounter = (value) => {
-	todoTitleCounter.textContent = `(${value})`;
+const _updateTodoTitleCounter = (value: number) => {
+	todoTitleCounter!.textContent = `(${value})`;
 };
 
 export const updateTodoTitleCounter = () => {
 	if (getFilter() === 'All') {
 		_updateTodoTitleCounter(getTasks().length);
 	} else {
-		_updateTodoTitleCounter(getTasksByStatus(getFilter()).length);
+		_updateTodoTitleCounter(getTasksByStatus(getFilter() as ITask['status']).length);
 	}
 };

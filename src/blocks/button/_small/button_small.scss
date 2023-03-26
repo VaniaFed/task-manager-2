@@ -1,6 +1,6 @@
-@import '@blocks/paragraph/_size/paragraph_size_sm';
-@import '@utilities/variables';
-@import '@utilities/media';
+@import 'blocks/paragraph/_size/paragraph_size_sm';
+@import 'utils/variables';
+@import 'utils/media';
 
 @mixin button_small {
 	@include paragraph_size_sm;

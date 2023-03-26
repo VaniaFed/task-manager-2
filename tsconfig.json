@@ -4,11 +4,16 @@
 		"module": "ESNext",
 		"moduleResolution": "Node",
 		"target": "ES2015",
+		"sourceMap": true,
+		"strict": true,
+		"strictNullChecks": false,
 		"paths": {
-			"@scss/*": ["./scr/scss/*"],
-			"@blocks/*": ["./src/blocks/*"],
-			"@services/*": ["./src/services/*"],
-			"@utilities/*": ["./src/utilities/*"]
+			"scss/*": ["./scr/scss/*"],
+			"blocks/*": ["./src/blocks/*"],
+			"services/*": ["./src/services/*"],
+			"utils/*": ["./src/utils/*"],
+			"helpers/*": ["./src/helpers/*"],
+			"types/*": ["./src/types/*"]
 		},
 		"allowSyntheticDefaultImports": true
 	},

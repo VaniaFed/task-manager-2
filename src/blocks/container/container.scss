@@ -1,5 +1,5 @@
-@import '@utilities/variables';
-@import '@utilities/media';
+@import 'utils/variables';
+@import 'utils/media';
 
 .container {
 	max-width: calc($container-width-desktop + 20px * 2);
