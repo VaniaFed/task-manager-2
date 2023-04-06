@@ -56,8 +56,6 @@ export const markTaskAsActive = (task: HTMLElement) => {
 	(task.getElementsByClassName('checkbox__input')[0] as HTMLInputElement).checked = false;
 };
 
-const isTaskValid = (task: ITask): boolean => !!task.id && !!task.status && !!task.text;
-
 export const renderTasks = (listeners?: TypeListener[]) => {
 	const tasks = shouldFilter() ? getTasksByStatus(getFilter() as ITask['status']) : getTasks();
 
@@ -68,9 +66,7 @@ export const renderTasks = (listeners?: TypeListener[]) => {
 	} else {
 		hideEmptyState();
 		tasks.forEach((task) => {
-			if (isTaskValid(task)) {
-				appendTaskToDOM(task, listeners);
-			}
+			appendTaskToDOM(task, listeners);
 		});
 	}
 };
