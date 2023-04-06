@@ -42,7 +42,7 @@ export const removeTaskFromDOM = (id: ITask['id']) => {
 	});
 };
 
-export const appendTaskToDOM = (task: ITask, listeners: TypeListener[]) => {
+export const appendTaskToDOM = (task: ITask, listeners?: TypeListener[]) => {
 	tasksList.prepend(createTaskElement(task, listeners));
 };
 
@@ -56,6 +56,8 @@ export const markTaskAsActive = (task: HTMLElement) => {
 	(task.getElementsByClassName('checkbox__input')[0] as HTMLInputElement).checked = false;
 };
 
+const isTaskValid = (task: ITask): boolean => !!task.id && !!task.status && !!task.text;
+
 export const renderTasks = (listeners?: TypeListener[]) => {
 	const tasks = shouldFilter() ? getTasksByStatus(getFilter() as ITask['status']) : getTasks();
 
@@ -66,7 +68,9 @@ export const renderTasks = (listeners?: TypeListener[]) => {
 	} else {
 		hideEmptyState();
 		tasks.forEach((task) => {
-			appendTaskToDOM(task, listeners);
+			if (isTaskValid(task)) {
+				appendTaskToDOM(task, listeners);
+			}
 		});
 	}
 };
