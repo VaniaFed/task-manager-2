@@ -6,4 +6,8 @@
 	display: block;
 	line-height: 20px;
 	font-weight: 600;
+
+	@include media-mobile {
+		line-height: 16px;
+	}
 }

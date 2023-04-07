@@ -15,5 +15,6 @@
 
 	@include media-mobile {
 		right: 10px;
+		transform: translateY(calc(-50% + 8px + 4px));
 	}
 }
