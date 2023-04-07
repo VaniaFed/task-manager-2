@@ -19,13 +19,13 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-        path: dist
-        name: build-files
+          path: dist
+          name: build-files
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    steps: 
-    - name: Get build project
-      uses: actions/download-artifact@v3
-      with:
-        name: build-files
+    steps:
+      - name: Get build project
+        uses: actions/download-artifact@v3
+        with:
+          name: build-files
