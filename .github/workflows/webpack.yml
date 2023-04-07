@@ -22,8 +22,11 @@ jobs:
           path: dist
           name: build-files
   deploy:
-    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Get build project
         uses: actions/download-artifact@v3
