@@ -25,6 +25,7 @@ export const initAddTaskOnEnter = () => {
 	input.addEventListener('keypress', (e) => {
 		if (e.key === 'Enter') {
 			handleAddTask(e);
+			hideClearInputIcon();
 		}
 	});
 };
@@ -32,6 +33,7 @@ export const initAddTaskOnEnter = () => {
 export const initAddTaskOnFocusOut = () => {
 	input.addEventListener('blur', (e) => {
 		handleAddTask(e);
+		hideClearInputIcon();
 	});
 };
 

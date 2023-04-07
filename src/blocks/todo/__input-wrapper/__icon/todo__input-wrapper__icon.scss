@@ -6,7 +6,7 @@
 	position: absolute;
 	top: 50%;
 	right: 20px;
-	transform: translateY(-50%);
+	transform: translateY(calc(-50% + 10px + 4px));
 	display: none;
 	align-items: center;
 	width: 24px;
