@@ -1,9 +1,0 @@
-@import 'blocks/button/button';
-@import 'blocks/button/_small/button_small';
-
-.clear-completed {
-	@include button;
-	@include button_small;
-
-	order: 1;
-}
