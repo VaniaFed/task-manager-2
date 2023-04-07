@@ -7,8 +7,14 @@ export const clearInput = () => {
 	input.value = '';
 };
 
-input.addEventListener('focus', () => {
-	showClearInputIcon();
+type CustomInputEvent = InputEvent & { target: EventTarget & { value: string } };
+
+input.addEventListener('input', ({ target }: CustomInputEvent) => {
+	if (target.value.length > 0) {
+		showClearInputIcon();
+	} else {
+		hideClearInputIcon();
+	}
 });
 
 input.addEventListener('blur', () => {

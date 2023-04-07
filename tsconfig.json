@@ -7,6 +7,7 @@
 		"sourceMap": true,
 		"strict": true,
 		"strictNullChecks": false,
+		"strictFunctionTypes": false,
 		"paths": {
 			"scss/*": ["./scr/scss/*"],
 			"blocks/*": ["./src/blocks/*"],
